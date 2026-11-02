@@ -1,0 +1,235 @@
+key,value_as_reported,frozen_source
+g1a_ouss_min,3.4,calibration G1a ou_ss
+g1a_ouss_max,5.0,calibration G1a ou_ss
+g1a_ar1_unev_var,2.4,calibration
+g1a_ar1_unev_var_label,LOW,calibration
+cal_cells_total,216,calibration
+cal_n_CALIBRATED,176,calibration
+cal_n_LOW,23,calibration
+cal_n_HIGH_NOT_EXCLUDED,16,calibration
+cal_n_HIGH,1,calibration
+F1_tot_ou_ss_var,−12.2,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|ou_ss|var
+F1_tot_ou_ss_var_ci,−14.8 to −9.6,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|ou_ss|var
+F1_tot_ou_ss_var_holm,<0.001,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|ou_ss|var
+F1_irr_ou_ss_var,−10.8,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|ou_ss|var
+F1_irr_ou_ss_var_ci,−13.5 to −8.1,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|ou_ss|var
+F1_irr_ou_ss_var_holm,<0.001,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|ou_ss|var
+F1_esc_ou_ss_var,−1.4,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ou_ss|var
+F1_esc_ou_ss_var_ci,−4.2 to 1.4,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ou_ss|var
+F1_esc_ou_ss_var_holm,1.00,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ou_ss|var
+F1_tot_ou_ss_ac,−12.1,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|ou_ss|ac
+F1_tot_ou_ss_ac_ci,−14.8 to −9.3,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|ou_ss|ac
+F1_tot_ou_ss_ac_holm,<0.001,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|ou_ss|ac
+F1_irr_ou_ss_ac,−10.9,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|ou_ss|ac
+F1_irr_ou_ss_ac_ci,−13.6 to −8.2,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|ou_ss|ac
+F1_irr_ou_ss_ac_holm,<0.001,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|ou_ss|ac
+F1_esc_ou_ss_ac,−1.2,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ou_ss|ac
+F1_esc_ou_ss_ac_ci,−3.8 to 1.4,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ou_ss|ac
+F1_esc_ou_ss_ac_holm,1.00,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ou_ss|ac
+F1_tot_ar1_var,−23.6,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|ar1|var
+F1_tot_ar1_var_ci,−26.2 to −20.9,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|ar1|var
+F1_tot_ar1_var_holm,<0.001,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|ar1|var
+F1_irr_ar1_var,−14.2,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|ar1|var
+F1_irr_ar1_var_ci,−16.9 to −11.4,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|ar1|var
+F1_irr_ar1_var_holm,<0.001,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|ar1|var
+F1_esc_ar1_var,−9.4,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ar1|var
+F1_esc_ar1_var_ci,−12.2 to −6.6,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ar1|var
+F1_esc_ar1_var_holm,<0.001,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ar1|var
+F1_tot_ar1_ac,−8.9,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|ar1|ac
+F1_tot_ar1_ac_ci,−11.7 to −6.2,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|ar1|ac
+F1_tot_ar1_ac_holm,<0.001,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|ar1|ac
+F1_irr_ar1_ac,−9.3,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|ar1|ac
+F1_irr_ar1_ac_ci,−11.9 to −6.6,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|ar1|ac
+F1_irr_ar1_ac_holm,<0.001,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|ar1|ac
+F1_esc_ar1_ac,+0.4,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ar1|ac
+F1_esc_ar1_ac_ci,−2.2 to 3.1,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ar1|ac
+F1_esc_ar1_ac_holm,1.00,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ar1|ac
+F1_tot_shuffle_var,−22.4,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|shuffle|var
+F1_tot_shuffle_var_ci,−25.1 to −19.8,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|shuffle|var
+F1_tot_shuffle_var_holm,<0.001,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|shuffle|var
+F1_irr_shuffle_var,−15.2,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|shuffle|var
+F1_irr_shuffle_var_ci,−18.0 to −12.5,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|shuffle|var
+F1_irr_shuffle_var_holm,<0.001,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|shuffle|var
+F1_esc_shuffle_var,−7.2,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|shuffle|var
+F1_esc_shuffle_var_ci,−9.9 to −4.5,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|shuffle|var
+F1_esc_shuffle_var_holm,<0.001,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|shuffle|var
+F1_tot_shuffle_ac,−9.7,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|shuffle|ac
+F1_tot_shuffle_ac_ci,−12.2 to −7.1,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|shuffle|ac
+F1_tot_shuffle_ac_holm,<0.001,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|shuffle|ac
+F1_irr_shuffle_ac,−10.7,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|shuffle|ac
+F1_irr_shuffle_ac_ci,−13.2 to −8.2,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|shuffle|ac
+F1_irr_shuffle_ac_holm,<0.001,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|shuffle|ac
+F1_esc_shuffle_ac,+1.0,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|shuffle|ac
+F1_esc_shuffle_ac_ci,−1.5 to 3.5,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|shuffle|ac
+F1_esc_shuffle_ac_holm,1.00,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|shuffle|ac
+F1_det_inf_ouss_var,43.6,F1
+F1_det_reg_ouss_var,55.7,F1
+F1_det_inf_ouss_ac,26.4,F1
+F1_det_reg_ouss_ac,38.4,F1
+H1_raw,+12.1,confirmatory_F1 ar1 var H1
+H1_raw_ci,10.3 to 13.9,confirmatory_F1
+H1_det_ouss,43.6,F1
+H1_det_ar1,31.5,F1
+H2_raw,+11.4,confirmatory_F1
+H2_raw_ci,9.2 to 13.7,confirmatory_F1
+H1_adj_G1a,+6.9,size_adjusted G1a
+H1_adj_G1a_ci,5.0 to 8.7,size_adjusted
+H2_adj_G1a,+6.2,size_adjusted G1a
+H2_adj_G1a_ci,3.9 to 8.5,size_adjusted
+astar_G1a_informative_reduced_N_ou_ss,0.0647,alpha_star
+astar_G1a_informative_reduced_N_ar1,0.0896,alpha_star
+astar_G1a_regular_N_ou_ss,0.0498,alpha_star
+astar_G1a_regular_N_ar1,0.0498,alpha_star
+H1_adj_XN2,+7.0,size_adjusted XN2
+H1_adj_XN2_ci,5.3 to 8.6,size_adjusted
+H2_adj_XN2,+6.3,size_adjusted XN2
+H2_adj_XN2_ci,4.2 to 8.5,size_adjusted
+astar_XN2_informative_reduced_N_ou_ss,0.0448,alpha_star
+astar_XN2_informative_reduced_N_ar1,0.0597,alpha_star
+astar_XN2_regular_N_ou_ss,0.0498,alpha_star
+astar_XN2_regular_N_ar1,0.0498,alpha_star
+AC_H1_raw,−1.5,ar1 ac H1
+AC_H1_raw_ci,−2.7 to −0.4,ar1 ac
+AC_H1_adj_G1a,+0.3,ar1 ac adj
+AC_H1_adj_G1a_ci,−0.9 to 1.4,ar1 ac adj
+AC_H1_adj_XN2,+2.6,ar1 ac adj XN2
+AC_H1_adj_XN2_ci,1.5 to 3.7,ar1 ac adj XN2
+SH_H1_raw,+18.3,shuffle var
+SH_H1_raw_ci,16.5 to 20.0,shuffle var
+SH_H1_adj_G1a,+10.5,shuffle adj
+SH_H1_adj_G1a_ci,8.8 to 12.2,shuffle adj
+n_scen,13,S_Q3 gains incl F1
+scen_gain_min,+10.0,S_Q3
+scen_gain_max,+17.8,S_Q3
+scen_gain_minlo,7.8,S_Q3
+XS2_gain,+11.9,XS2 rule
+SD_diff,−4.3,state_dependence
+SD_ci,−9.1 to 0.4,state_dependence
+SD_F1esc,−1.4,sd
+SD_XS1esc,+2.9,sd
+dose_total_ou_ss_var,−7.1,dose_response
+dose_total_ou_ss_var_ci,−9.8 to −4.5,dose_response
+dose_total_ou_ss_var_m1p5,−8.9,dose_response
+dose_total_ou_ss_var_m2p0,−9.6,dose_response
+dose_total_ou_ss_var_m3p0,−14.0,dose_response
+dose_total_ou_ss_var_m4p0,−16.5,dose_response
+dose_total_ou_ss_var_m6p0,−17.8,dose_response
+dose_escalation_ou_ss_var,−6.6,dose_response
+dose_escalation_ou_ss_var_ci,−9.5 to −3.7,dose_response
+dose_escalation_ou_ss_var_m1p5,+0.9,dose_response
+dose_escalation_ou_ss_var_m3p0,−3.5,dose_response
+dose_escalation_ou_ss_var_m4p0,−6.4,dose_response
+dose_escalation_ou_ss_var_m6p0,−7.9,dose_response
+dose_total_ou_ss_ac,−5.9,dose_response
+dose_total_ou_ss_ac_ci,−8.3 to −3.6,dose_response
+dose_total_ou_ss_ac_m1p5,−11.2,dose_response
+dose_total_ou_ss_ac_m2p0,−11.3,dose_response
+dose_total_ou_ss_ac_m3p0,−15.9,dose_response
+dose_total_ou_ss_ac_m4p0,−19.1,dose_response
+dose_total_ou_ss_ac_m6p0,−17.6,dose_response
+dose_escalation_ou_ss_ac,−6.0,dose_response
+dose_escalation_ou_ss_ac_ci,−8.5 to −3.4,dose_response
+dose_escalation_ou_ss_ac_m1p5,−0.2,dose_response
+dose_escalation_ou_ss_ac_m3p0,−6.2,dose_response
+dose_escalation_ou_ss_ac_m4p0,−8.7,dose_response
+dose_escalation_ou_ss_ac_m6p0,−7.8,dose_response
+E2_recovery_var,+10.6,S_Q2_E2
+E2_recovery_var_ci,5.4 to 15.8,S_Q2_E2
+E2_det_ct_unev_var,54.2,E2
+E2_det_ouss_unev_var,43.6,E2
+E2_recovery_ac,+12.0,S_Q2_E2
+E2_recovery_ac_ci,6.8 to 17.0,S_Q2_E2
+E2_det_ct_unev_ac,38.0,E2
+E2_det_ouss_unev_ac,26.0,E2
+cal_XN1_regular_N_index_ou_ss_ac,6.2|CALIBRATED|5.3-7.2,calibration
+cal_XN1_informative_reduced_N_index_ou_ss_ac,7.1|HIGH_NOT_EXCLUDED|6.1-8.1,calibration
+cal_XN1_poisson_matched_index_ou_ss_ac,7.6|HIGH_NOT_EXCLUDED|6.6-8.6,calibration
+cal_XN1_regular_N_index_ar1_ac,8.3|HIGH_NOT_EXCLUDED|7.3-9.4,calibration
+cal_XN1_informative_reduced_N_index_ar1_ac,7.0|HIGH_NOT_EXCLUDED|6.1-8.0,calibration
+cal_XN1_poisson_matched_index_ar1_ac,8.4|HIGH_NOT_EXCLUDED|7.4-9.4,calibration
+cal_XN1_regular_N_index_shuffle_ac,4.3|CALIBRATED|3.5-5.1,calibration
+cal_XN1_informative_reduced_N_index_shuffle_ac,3.8|CALIBRATED|3.1-4.5,calibration
+cal_XN1_poisson_matched_index_shuffle_ac,4.5|CALIBRATED|3.7-5.3,calibration
+cal_E2FA_regular_N_ct_W30_ou_ss_var,6.1|CALIBRATED,calibration
+cal_E2FA_regular_N_ct_W30_ou_ss_ac,5.5|CALIBRATED,calibration
+cal_E2FA_informative_reduced_N_ct_W30_ou_ss_var,4.8|CALIBRATED,calibration
+cal_E2FA_informative_reduced_N_ct_W30_ou_ss_ac,5.4|CALIBRATED,calibration
+fold_0.05_0.05,0/300|10.7,fold_selection
+fold_0.05_0.1,0/300|11.0,fold_selection
+fold_0.07_0.05,3/300|13.8,fold_selection
+fold_0.07_0.1,0/300|12.0,fold_selection
+fold_0.1_0.05,36/300|21.2,fold_selection
+fold_0.1_0.1,0/300|16.3,fold_selection
+M1_cases,"7,087",M1
+M1_controls,"14,174",M1
+M1_did,+0.087,M1
+M1_did_ci,0.084 to 0.091,M1
+M1_case_base,0.164,M1
+M1_case_pre,0.242,M1
+M1_ctrl_base,0.104,M1
+M1_ctrl_pre,0.094,M1
+M1_ror,1.63,M1
+M1_ror_ci,1.59 to 1.66,M1
+M1_did12,+0.146,M1
+M1_did12_ci,0.140 to 0.152,M1
+M1_candidates,"215,106",M1
+P5_ref_ar1_index_unev,32.0,P5 recovery rate_B (index ar1)
+P5_ref_ouss_index_unev,45.3,P5 h2h rate_B
+P5_ref_ouss_index_even,54.9,P5 gap rate_B
+P5_ir_min_ar1,−8.2,P5 inf-reg
+P5_ir_max_ar1,−24.4,P5 inf-reg
+P5_ir_min_sh,−8.9,P5 inf-reg
+P5_ir_max_sh,−17.5,P5 inf-reg
+P5_cls_ar1_rep_var_NO_RECOVERY,2,P5 classes
+P5_cls_ar1_rep_var_GENUINE_RECOVERY,11,P5 classes
+P5_cls_ar1_rep_ac_NO_RECOVERY,13,P5 classes
+P5_cls_shuffle_rep_var_NO_RECOVERY,1,P5 classes
+P5_cls_shuffle_rep_var_GENUINE_RECOVERY,12,P5 classes
+P5_cls_shuffle_rep_ac_NO_RECOVERY,11,P5 classes
+P5_cls_shuffle_rep_ac_IMPROVEMENT_FA_CONTROL_NOT_ESTABLISHED,2,P5 classes
+P5FA_n_CALIBRATED,96,calibration P5FA
+P5FA_n_HIGH_NOT_EXCLUDED,5,calibration P5FA
+P5FA_n_HIGH,1,calibration P5FA
+P5FA_n_LOW,2,calibration P5FA
+P5FA_total,104,calibration P5FA
+E2_gapbench_var,+1.2,E2
+E2_gapbench_var_ci,−4.4 to 6.8,E2
+E2_ir_var,−9.0,E2
+E2_ir_var_ci,−14.0 to −3.8,E2
+E2_det_ouss_even_var,53.0,E2
+E2_det_ct_even_var,63.2,E2
+E2_holm_var,0.0014,E2
+E2_gapbench_ac,0.0,E2
+E2_gapbench_ac_ci,−5.6 to 5.4,E2
+E2_ir_ac,−5.8,E2
+E2_ir_ac_ci,−11.0 to −0.4,E2
+E2_det_ouss_even_ac,38.0,E2
+E2_det_ct_even_ac,43.8,E2
+E2_holm_ac,0.0003,E2
+scenario_gain_F1,+12.1 (10.5 to 13.7),S_Q3_family gain ar1 var
+scenario_gain_XS1,+13.8 (11.4 to 16.2),S_Q3_family gain ar1 var
+scenario_gain_XR1,+11.5 (9.3 to 13.8),S_Q3_family gain ar1 var
+scenario_gain_XR2,+11.7 (9.5 to 14.0),S_Q3_family gain ar1 var
+scenario_gain_XR3,+13.8 (11.4 to 16.3),S_Q3_family gain ar1 var
+scenario_gain_XR4,+13.5 (11.1 to 15.9),S_Q3_family gain ar1 var
+scenario_gain_XR5,+10.2 (8.0 to 12.5),S_Q3_family gain ar1 var
+scenario_gain_XR6,+16.3 (13.9 to 18.7),S_Q3_family gain ar1 var
+scenario_gain_XR7,+17.8 (15.3 to 20.4),S_Q3_family gain ar1 var
+scenario_gain_XR8,+16.1 (13.8 to 18.5),S_Q3_family gain ar1 var
+scenario_gain_XR9,+10.0 (7.8 to 12.2),S_Q3_family gain ar1 var
+scenario_gain_XR10,+16.4 (14.0 to 18.8),S_Q3_family gain ar1 var
+scenario_gain_XS2,+11.9 (9.8 to 14.1),S_Q3_family gain ar1 var
+P5_fixed_time|W20,det 23.8; rec −8.2 (−11.1 to −5.4); vs ou_ss −21.5 (−24.7 to −18.4); inf-reg −24.4; NO_RECOVERY; Holm <0.001,S_Q2_P5_family / P5_head_to_head
+P5_fixed_time|W30,det 33.5; rec +1.5 (−1.4 to 4.4); vs ou_ss −11.8 (−14.9 to −8.7); inf-reg −21.3; NO_RECOVERY; Holm 1.000,S_Q2_P5_family / P5_head_to_head
+P5_fixed_time|W40,det 36.1; rec +4.1 (1.0 to 7.3); vs ou_ss −9.2 (−12.4 to −5.9); inf-reg −23.1; GENUINE_RECOVERY; Holm 0.149,S_Q2_P5_family / P5_head_to_head
+P5_binned|30|linear_interp,det 43.5; rec +11.5 (7.9 to 15.1); vs ou_ss −1.8 (−5.4 to 1.7); inf-reg −10.8; GENUINE_RECOVERY; Holm <0.001,S_Q2_P5_family / P5_head_to_head
+P5_binned|30|locf,det 42.9; rec +10.9 (7.4 to 14.6); vs ou_ss −2.4 (−6.0 to 1.1); inf-reg −11.5; GENUINE_RECOVERY; Holm <0.001,S_Q2_P5_family / P5_head_to_head
+P5_binned|30|drop,det 41.6; rec +9.6 (6.3 to 12.9); vs ou_ss −3.7 (−7.0 to −0.4); inf-reg −13.8; GENUINE_RECOVERY; Holm <0.001,S_Q2_P5_family / P5_head_to_head
+P5_binned|60|linear_interp,det 49.6; rec +17.6 (14.0 to 21.2); vs ou_ss +4.3 (0.7 to 7.8); inf-reg −10.5; GENUINE_RECOVERY; Holm <0.001,S_Q2_P5_family / P5_head_to_head
+P5_binned|60|locf,det 46.3; rec +14.3 (10.8 to 17.8); vs ou_ss +1.0 (−2.4 to 4.4); inf-reg −12.5; GENUINE_RECOVERY; Holm <0.001,S_Q2_P5_family / P5_head_to_head
+P5_binned|60|drop,det 41.1; rec +9.1 (6.1 to 12.0); vs ou_ss −4.2 (−7.2 to −1.3); inf-reg −11.9; GENUINE_RECOVERY; Holm <0.001,S_Q2_P5_family / P5_head_to_head
+P5_binned|120|linear_interp,det 52.4; rec +20.4 (16.8 to 23.9); vs ou_ss +7.1 (3.6 to 10.6); inf-reg −8.2; GENUINE_RECOVERY; Holm <0.001,S_Q2_P5_family / P5_head_to_head
+P5_binned|120|locf,det 47.1; rec +15.1 (11.6 to 18.7); vs ou_ss +1.8 (−1.8 to 5.3); inf-reg −10.8; GENUINE_RECOVERY; Holm <0.001,S_Q2_P5_family / P5_head_to_head
+P5_binned|120|drop,det 38.2; rec +6.2 (3.6 to 8.8); vs ou_ss −7.1 (−9.7 to −4.5); inf-reg −15.8; GENUINE_RECOVERY; Holm <0.001,S_Q2_P5_family / P5_head_to_head
+P5_interp|60,det 49.3; rec +17.3 (13.8 to 20.8); vs ou_ss +4.0 (0.5 to 7.5); inf-reg −10.1; GENUINE_RECOVERY; Holm <0.001,S_Q2_P5_family / P5_head_to_head
+_inputs,A1 summary sha256 cf05a47d9d01869c86147ce098ac36bfaaf4be547fef537364da10dfefa537c4; M1 summary sha256 1cfde0167a1f1aed8713747d70fe59abc6ca1480eadb1a581b5f478c4a76bfa1,"rounding: exact stored decimal, half away from zero"

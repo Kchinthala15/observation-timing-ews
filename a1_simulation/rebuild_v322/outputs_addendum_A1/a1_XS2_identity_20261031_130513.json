@@ -1,0 +1,10 @@
+{
+  "block": "XS2",
+  "against": "S2",
+  "rows_compared": 2000,
+  "rows_differing": 0,
+  "differences": [],
+  "passed": true,
+  "rows_sha256": "5d4407edfd3e2dbc8000aa31a0b9d2caf16a5eaf0e740a118c538ead18489b3d",
+  "written": "2026-10-31T13:05:13"
+}

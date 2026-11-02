@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software or outputs, please cite the archive and the accompanying manuscript. Licensing: code under the MIT License; protocols, outputs and documentation under CC BY 4.0 (see README)."
+title: "Early-warning statistics under escalating observation density: Code, protocols, and reproducibility materials"
+version: "3.1.0"
+authors:
+  - family-names: Chinthala
+    given-names: Lakshmi Kalyani
+    affiliation: SmartDaaS LLC
+    orcid: "https://orcid.org/0009-0009-8736-6673"
+repository-code: "https://github.com/Kchinthala15/observation-timing-ews"

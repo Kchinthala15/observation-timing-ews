@@ -1,0 +1,40 @@
+{
+  "phase": "addendum_A1",
+  "block": "XR7",
+  "role": "secondary",
+  "model": "ou_csd",
+  "design": {
+    "schedule": "step",
+    "m": 4.0,
+    "trigger": "primary",
+    "arms": [
+      "regular_N",
+      "informative_reduced_N",
+      "thinned",
+      "poisson_matched"
+    ],
+    "analyses": [
+      "index"
+    ],
+    "nulls": [
+      "ou_ss",
+      "ar1",
+      "shuffle"
+    ],
+    "n_variability_draws": 0
+  },
+  "seed_base": 3000000,
+  "patient_ids": [
+    0,
+    999
+  ],
+  "n_patients": 1000,
+  "rows": 12000,
+  "tipped": 0,
+  "minutes": 9.5,
+  "rows_sha256": "ed62e6970d8fd5d9d71a1fc469cad6ea40e18293570966875b6bf573457eb3e2",
+  "a1_sha256": "9aff4ef745296e32b6b888b3cc32d08861aec3affe71a8153a88409922b4d7e5",
+  "config_sha256": "0473d4830407f1fde68988d32fb1d2ad14537b815c0fd34492b8391d084950d3",
+  "parent_config_sha256": "9a245eb092a47bc5e2851f0b681ec439c1a72ab34ed2fe3dedf63b9b29bff482",
+  "written": "2026-10-31T12:18:42"
+}

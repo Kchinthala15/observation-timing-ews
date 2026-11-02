@@ -1,0 +1,444 @@
+{
+ "plan": "M1 v1.2",
+ "seed": 20261101,
+ "bootstrap_resamples": 2000,
+ "demo": false,
+ "software": {
+  "python": "3.13.14",
+  "pandas": "3.0.5",
+  "numpy": "2.5.1"
+ },
+ "cohort": {
+  "n_ward_escalations": 7087,
+  "n_controls": 14152,
+  "n_ed_escalations": 20,
+  "case_hours_since_admit_median": 124.08083333333333,
+  "control_hours_since_admit_median": 123.93152777777777
+ },
+ "matching": {
+  "elapsed_diff_hours_control_minus_case": {
+   "mean": 0.08553669288989355,
+   "median": 0.16152777777777771,
+   "max_abs": 12.000000000000014,
+   "min": -12.0,
+   "max": 12.000000000000014,
+   "abs_quantiles_10_25_50_75_90": [
+    0.966722222222225,
+    2.450000000000003,
+    5.056666666666672,
+    8.16104166666667,
+    10.391194444444439
+   ],
+   "share_within_12h": 1.0
+  },
+  "case_hours_since_admit_median": 124.08083333333333,
+  "control_hours_since_admit_median": 123.93152777777777,
+  "clock_hour_and_minute_exact_match_share": 1.0,
+  "controls_48h_continuous_ward_share": 0.9985161107970605,
+  "cases_48h_continuous_ward_share": 1.0,
+  "one_admission_per_control_patient": true,
+  "one_admission_per_case_patient": true,
+  "no_patient_both_case_and_control": true,
+  "cases_with_2_controls": 7071,
+  "cases_with_1_control": 10,
+  "cases_with_no_control": "<10 suppressed",
+  "method": "risk-set matching on exact clock hour and minute, elapsed-time caliper +/-12 h, up to 2 controls per case, without replacement (each control patient used once); cases processed in seeded random order, candidates examined in seeded random order, first eligible accepted; selection uses transfers only, never laboratory data"
+ },
+ "primary_24h": {
+  "window": "24 h windows",
+  "n_matched_sets": 7081,
+  "n_controls": 14152,
+  "draws": {
+   "case_base_per_h": 0.16411876853551757,
+   "case_pre_per_h": 0.24168549639881373,
+   "control_base_per_h": 0.10467860000941485,
+   "control_pre_per_h": 0.09368968601421646,
+   "case_ratio": 1.4726255781434872,
+   "control_ratio": 0.8950223446415022,
+   "did_per_h": 0.08855564185849456,
+   "ratio_of_ratios": 1.6453506294676272,
+   "share_sets_case_increase": 0.6370569128654144,
+   "share_sets_control_mean_increase": 0.30419432283575765,
+   "share_sets_contrast_positive": 0.7111989831944641,
+   "did_ci95": [
+    0.08497755142870594,
+    0.09205973732523655
+   ],
+   "case_ratio_ci95": [
+    1.4479683354748514,
+    1.4973731636842984
+   ],
+   "ratio_of_ratios_ci95": [
+    1.6116959325642772,
+    1.6793777428387944
+   ]
+  },
+  "times": {
+   "case_base_per_h": 0.08749352727957445,
+   "case_pre_per_h": 0.1396695382008191,
+   "control_base_per_h": 0.054994586452007714,
+   "control_pre_per_h": 0.04931918749705785,
+   "case_ratio": 1.5963413813975385,
+   "control_ratio": 0.8968007703830515,
+   "did_per_h": 0.057851409876194505,
+   "ratio_of_ratios": 1.780040153974992,
+   "share_sets_case_increase": 0.6147436802711481,
+   "share_sets_control_mean_increase": 0.26945346702443157,
+   "share_sets_contrast_positive": 0.6969354610930659,
+   "did_ci95": [
+    0.05558235359883256,
+    0.06003742409264228
+   ],
+   "case_ratio_ci95": [
+    1.5649013834421817,
+    1.6273412193191932
+   ],
+   "ratio_of_ratios_ci95": [
+    1.7391269160946565,
+    1.8207210181946503
+   ]
+  },
+  "tests": {
+   "case_base_per_h": 1.5258379230805443,
+   "case_pre_per_h": 2.2864002259567857,
+   "control_base_per_h": 1.0411106011391986,
+   "control_pre_per_h": 0.9450907357717836,
+   "case_ratio": 1.4984554986945973,
+   "control_ratio": 0.9077716956658124,
+   "did_per_h": 0.8565821682436567,
+   "ratio_of_ratios": 1.6506964315466381,
+   "share_sets_case_increase": 0.6999011439062279,
+   "share_sets_control_mean_increase": 0.37127524360965963,
+   "share_sets_contrast_positive": 0.7295579720378478,
+   "did_ci95": [
+    0.8210974644588807,
+    0.8911215606317375
+   ],
+   "case_ratio_ci95": [
+    1.473081904581133,
+    1.5241349394246686
+   ],
+   "ratio_of_ratios_ci95": [
+    1.6165775295567404,
+    1.6859966728507987
+   ]
+  },
+  "old": {
+   "case_base_per_h": 0.08706397401496964,
+   "case_pre_per_h": 0.1381337381725745,
+   "control_base_per_h": 0.054829826295720946,
+   "control_pre_per_h": 0.04920150167113872,
+   "case_ratio": 1.5865774533657744,
+   "control_ratio": 0.8973492165700793,
+   "did_per_h": 0.056698088782187066,
+   "ratio_of_ratios": 1.7680713640450025,
+   "share_sets_case_increase": 0.6109306595113685,
+   "share_sets_control_mean_increase": 0.2690297980511227,
+   "share_sets_contrast_positive": 0.6943934472532128,
+   "did_ci95": [
+    0.05442962093395472,
+    0.058887265805206424
+   ],
+   "case_ratio_ci95": [
+    1.5558974839757398,
+    1.6172165076281726
+   ],
+   "ratio_of_ratios_ci95": [
+    1.7275362760229973,
+    1.808211040880142
+   ]
+  },
+  "tests_per_draw": {
+   "case_base": 9.297156788928328,
+   "case_pre": 9.460229347746695,
+   "control_base": 9.942941507311588,
+   "control_pre": 10.085851605201986
+  },
+  "old_vs_specimen": {
+   "mean_draws_specimen_per_h": 0.13379134680293253,
+   "mean_draws_60s_per_h": 0.07222837093203975,
+   "share_windows_equal": 0.24805726934488767,
+   "correlation": 0.9194482500481194
+  }
+ },
+ "profile": {
+  "cases_mean_draws_by_hour_before_event": [
+   0.6455,
+   0.5451,
+   0.3995,
+   0.337,
+   0.3131,
+   0.274,
+   0.25,
+   0.2317,
+   0.222,
+   0.198,
+   0.2074,
+   0.2105,
+   0.2174,
+   0.1991,
+   0.1795,
+   0.1767,
+   0.1697,
+   0.1575,
+   0.1384,
+   0.1518,
+   0.1469,
+   0.1483,
+   0.1398,
+   0.1422,
+   0.1386,
+   0.1666,
+   0.1817,
+   0.1994,
+   0.197,
+   0.1764,
+   0.1676,
+   0.1716,
+   0.1575,
+   0.1733,
+   0.1836,
+   0.1875,
+   0.1926,
+   0.176,
+   0.1719,
+   0.1678,
+   0.1484,
+   0.1484,
+   0.136,
+   0.1398,
+   0.1367,
+   0.1445,
+   0.1307,
+   0.1453
+  ],
+  "cases_share_of_draws_by_clock_hour": [
+   0.0413,
+   0.017,
+   0.0166,
+   0.0242,
+   0.054,
+   0.1215,
+   0.151,
+   0.0965,
+   0.0444,
+   0.0359,
+   0.0348,
+   0.0254,
+   0.0318,
+   0.0356,
+   0.0253,
+   0.0421,
+   0.0323,
+   0.0356,
+   0.0244,
+   0.0291,
+   0.0205,
+   0.0272,
+   0.0165,
+   0.0173
+  ],
+  "controls_mean_draws_by_hour_before_event": [
+   0.0714,
+   0.0801,
+   0.0958,
+   0.1129,
+   0.1039,
+   0.1109,
+   0.102,
+   0.0936,
+   0.0958,
+   0.1093,
+   0.1132,
+   0.1146,
+   0.1139,
+   0.1177,
+   0.1045,
+   0.0906,
+   0.0948,
+   0.0794,
+   0.0833,
+   0.0818,
+   0.0672,
+   0.0728,
+   0.0719,
+   0.0679,
+   0.0719,
+   0.0904,
+   0.1117,
+   0.1273,
+   0.1223,
+   0.1132,
+   0.1116,
+   0.1023,
+   0.1138,
+   0.12,
+   0.1237,
+   0.1267,
+   0.1305,
+   0.1222,
+   0.1135,
+   0.1091,
+   0.0998,
+   0.0967,
+   0.0871,
+   0.0871,
+   0.0788,
+   0.0875,
+   0.0866,
+   0.079
+  ],
+  "controls_share_of_draws_by_clock_hour": [
+   0.0498,
+   0.0073,
+   0.0069,
+   0.0145,
+   0.0529,
+   0.1609,
+   0.2364,
+   0.1507,
+   0.05,
+   0.0345,
+   0.0239,
+   0.0168,
+   0.0197,
+   0.0248,
+   0.0154,
+   0.0287,
+   0.019,
+   0.0214,
+   0.0116,
+   0.0154,
+   0.008,
+   0.0154,
+   0.0072,
+   0.0087
+  ]
+ },
+ "sensitivity_12h": {
+  "window": "12 h windows",
+  "n_matched_sets": 7081,
+  "n_controls": 14152,
+  "draws": {
+   "case_base_per_h": 0.1639128183401591,
+   "case_pre_per_h": 0.3194581744574683,
+   "control_base_per_h": 0.08709339547144943,
+   "control_pre_per_h": 0.10028597655698347,
+   "case_ratio": 1.9489517518667432,
+   "control_ratio": 1.151476251604621,
+   "did_per_h": 0.14235277503177518,
+   "ratio_of_ratios": 1.6925679093692232,
+   "share_sets_case_increase": 0.664877842112696,
+   "share_sets_control_mean_increase": 0.49343313091371277,
+   "share_sets_contrast_positive": 0.6804123711340206,
+   "did_ci95": [
+    0.135912418208351,
+    0.1486145436143671
+   ],
+   "case_ratio_ci95": [
+    1.8969289186768792,
+    2.0047252199716246
+   ],
+   "ratio_of_ratios_ci95": [
+    1.6255743636600433,
+    1.761202454912954
+   ]
+  },
+  "times": {
+   "case_base_per_h": 0.09092406910511698,
+   "case_pre_per_h": 0.1884150072965212,
+   "control_base_per_h": 0.04628583533399237,
+   "control_pre_per_h": 0.052352539660123334,
+   "case_ratio": 2.0722236603675896,
+   "control_ratio": 1.131070429697432,
+   "did_per_h": 0.09142423386527326,
+   "ratio_of_ratios": 1.8320907398506754,
+   "share_sets_case_increase": 0.6395989267052676,
+   "share_sets_control_mean_increase": 0.43765004942804686,
+   "share_sets_contrast_positive": 0.6710916537212258,
+   "did_ci95": [
+    0.08769918326036813,
+    0.09547865767546956
+   ],
+   "case_ratio_ci95": [
+    2.016674806135341,
+    2.13086562616033
+   ],
+   "ratio_of_ratios_ci95": [
+    1.7619977586733173,
+    1.907460214964877
+   ]
+  },
+  "tests": {
+   "case_base_per_h": 1.5234783222708657,
+   "case_pre_per_h": 3.049322129642706,
+   "control_base_per_h": 0.8765181471543567,
+   "control_pre_per_h": 1.0136633243892106,
+   "case_ratio": 2.0015526870756184,
+   "control_ratio": 1.1564658731597286,
+   "did_per_h": 1.3886986301369864,
+   "ratio_of_ratios": 1.7307494613800578,
+   "share_sets_case_increase": 0.68803841265358,
+   "share_sets_control_mean_increase": 0.5161700324812879,
+   "share_sets_contrast_positive": 0.6871910747069623,
+   "did_ci95": [
+    1.320483512215789,
+    1.457229881608059
+   ],
+   "case_ratio_ci95": [
+    1.9413317495747395,
+    2.060939406448685
+   ],
+   "ratio_of_ratios_ci95": [
+    1.6592137428462568,
+    1.8054216750138787
+   ]
+  },
+  "old": {
+   "case_base_per_h": 0.09044155721884857,
+   "case_pre_per_h": 0.18582591912630042,
+   "control_base_per_h": 0.04616814950807324,
+   "control_pre_per_h": 0.05223485383420421,
+   "case_ratio": 2.054651919323357,
+   "control_ratio": 1.1314045373438697,
+   "did_per_h": 0.08931765758132092,
+   "ratio_of_ratios": 1.8160188080445032,
+   "share_sets_case_increase": 0.6367744668832086,
+   "share_sets_control_mean_increase": 0.4379324954102528,
+   "share_sets_contrast_positive": 0.6691145318457845,
+   "did_ci95": [
+    0.0857098514804877,
+    0.09327204843948593
+   ],
+   "case_ratio_ci95": [
+    1.9999904446426295,
+    2.111555926254293
+   ],
+   "ratio_of_ratios_ci95": [
+    1.7466117596328226,
+    1.8903891002054611
+   ]
+  },
+  "tests_per_draw": {
+   "case_base": 9.294442848937392,
+   "case_pre": 9.545293792595322,
+   "control_base": 10.064121621621622,
+   "control_pre": 10.104731713044501
+  },
+  "old_vs_specimen": {
+   "mean_draws_specimen_per_h": 0.14306935744674174,
+   "mean_draws_60s_per_h": 0.07887093988916623,
+   "share_windows_equal": 0.5630622144774643,
+   "correlation": 0.9094783478339518
+  }
+ },
+ "ed_origin_descriptive": {
+  "n": 20,
+  "draws_base_per_h": 0.08541666666666667,
+  "draws_pre_per_h": 0.1875,
+  "tests_base_per_h": 0.63125,
+  "tests_pre_per_h": 1.54375
+ },
+ "runtime_minutes": 20.3,
+ "script_sha256": "f24e39f891f3b4537020dcaccce582da6b32dc3217132d8bbc575b8df0f85ca9"
+}

@@ -1,0 +1,8 @@
+2026-10-31T19:17:02  FOLDP|fold_v2|sf=0.05|re=0.05: model fold_v2|sf=0.05|re=0.05, 300 patients, seed block 8000000, workers 7
+2026-10-31T19:17:07    50/300 patients
+2026-10-31T19:17:09    100/300 patients
+2026-10-31T19:17:10    150/300 patients
+2026-10-31T19:17:13    200/300 patients
+2026-10-31T19:17:16    250/300 patients
+2026-10-31T19:17:18    300/300 patients
+2026-10-31T19:17:18  FOLDP|fold_v2|sf=0.05|re=0.05: done in 0.3 min, 300 rows.

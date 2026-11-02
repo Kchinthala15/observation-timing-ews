@@ -1,0 +1,1 @@
+2026-10-31T13:05:13  XS2 vs S2: 2000 rows compared, 0 differing -> PASSED

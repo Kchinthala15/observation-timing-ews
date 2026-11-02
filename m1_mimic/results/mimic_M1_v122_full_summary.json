@@ -1,0 +1,516 @@
+{
+ "plan": "M1 v1.2.2",
+ "seed": 20261101,
+ "bootstrap_resamples": 2000,
+ "demo": false,
+ "software": {
+  "python": "3.13.14",
+  "pandas": "3.0.5",
+  "numpy": "2.5.1"
+ },
+ "cohort": {
+  "n_ward_escalations": 7087,
+  "n_controls": 14174,
+  "n_ed_escalations": 20,
+  "case_hours_since_admit_median": 124.08083333333333,
+  "control_hours_since_admit_median": 124.12430555555557
+ },
+ "matching": {
+  "elapsed_diff_hours_control_minus_case": {
+   "mean": 0.1636133060533369,
+   "median": 0.2768055555555655,
+   "max_abs": 12.0,
+   "min": -12.0,
+   "max": 12.0,
+   "abs_quantiles_10_25_50_75_90": [
+    0.9333333333333371,
+    2.4000000000000057,
+    5.060000000000002,
+    8.16305555555555,
+    10.423194444444446
+   ],
+   "share_within_12h": 1.0
+  },
+  "case_hours_since_admit_median": 124.08083333333333,
+  "control_hours_since_admit_median": 124.12430555555557,
+  "clock_hour_and_minute_exact_match_share": 1.0,
+  "controls_48h_continuous_ward_share": 1.0,
+  "cases_48h_continuous_ward_share": 1.0,
+  "one_admission_per_control_patient": true,
+  "one_admission_per_case_patient": true,
+  "no_patient_both_case_and_control": true,
+  "cases_with_2_controls": 7087,
+  "cases_with_1_control": 0,
+  "cases_with_no_control": 0,
+  "search": "exhaustive over all candidate admissions (no cap)",
+  "candidate_control_admissions": 215106,
+  "eligible_patients_per_case_quantiles_0_1_5_10_25_50": [
+   13.0,
+   980.46,
+   4666.5,
+   8977.2,
+   25450.5,
+   51818.0
+  ],
+  "available_patients_at_turn_quantiles_0_1_5_10_25_50": [
+   2.0,
+   543.74,
+   3081.1,
+   6563.0,
+   20417.5,
+   45997.0
+  ],
+  "cases_no_eligible_control": 0,
+  "cases_eligible_but_all_already_assigned": 0,
+  "cases_one_control_only_one_eligible": 0,
+  "cases_one_control_others_already_assigned": 0,
+  "coverage_share_cases_matched": 1.0,
+  "coverage_share_cases_two_controls": 1.0,
+  "method": "risk-set matching on exact clock hour and minute, elapsed-time caliper +/-12 h, up to 2 controls per case, without replacement (each control patient used once); cases processed in seeded random order, candidates examined in seeded random order, first eligible accepted; selection uses transfers only, never laboratory data; v1.2.2: exhaustive eligible-control search, no candidate cap"
+ },
+ "primary_24h": {
+  "window": "24 h windows",
+  "n_matched_sets": 7087,
+  "n_controls": 14174,
+  "draws": {
+   "case_base_per_h": 0.164120925638493,
+   "case_pre_per_h": 0.2417160528667513,
+   "control_base_per_h": 0.1038756408447392,
+   "control_pre_per_h": 0.09406895254221344,
+   "case_ratio": 1.4727924055167472,
+   "control_ratio": 0.905592030790129,
+   "did_per_h": 0.08740181553078406,
+   "ratio_of_ratios": 1.6263310137918683,
+   "share_sets_case_increase": 0.6372230845209539,
+   "share_sets_control_mean_increase": 0.31127416396218427,
+   "share_sets_contrast_positive": 0.6980386623394949,
+   "did_ci95": [
+    0.08388304877475189,
+    0.09095901827289404
+   ],
+   "case_ratio_ci95": [
+    1.4493083374424964,
+    1.4974283946311777
+   ],
+   "ratio_of_ratios_ci95": [
+    1.593653111195226,
+    1.658100086437191
+   ],
+   "valid_bootstrap_replicates": {
+    "did": 2000,
+    "case_ratio": 2000,
+    "ratio_of_ratios": 2000,
+    "of": 2000
+   }
+  },
+  "times": {
+   "case_base_per_h": 0.08749000517379238,
+   "case_pre_per_h": 0.13964536004891587,
+   "control_base_per_h": 0.05457175109355157,
+   "control_pre_per_h": 0.04953318282300926,
+   "case_ratio": 1.5961292923862647,
+   "control_ratio": 0.907670760611937,
+   "did_per_h": 0.05719392314566578,
+   "ratio_of_ratios": 1.7584892690717282,
+   "share_sets_case_increase": 0.6149287427684492,
+   "share_sets_control_mean_increase": 0.27486947932834765,
+   "share_sets_contrast_positive": 0.6914068011852688,
+   "did_ci95": [
+    0.05499469392314567,
+    0.0593340653073703
+   ],
+   "case_ratio_ci95": [
+    1.5679828939990619,
+    1.624695746396574
+   ],
+   "ratio_of_ratios_ci95": [
+    1.7189047434375724,
+    1.7972503800036275
+   ],
+   "valid_bootstrap_replicates": {
+    "did": 2000,
+    "case_ratio": 2000,
+    "ratio_of_ratios": 2000,
+    "of": 2000
+   }
+  },
+  "tests": {
+   "case_base_per_h": 1.526333427402286,
+   "case_pre_per_h": 2.2865810639198534,
+   "control_base_per_h": 1.0377980809933682,
+   "control_pre_per_h": 0.9457545505855792,
+   "case_ratio": 1.4980875232559483,
+   "control_ratio": 0.9113088257788201,
+   "did_per_h": 0.8522911669253563,
+   "ratio_of_ratios": 1.6438856739653072,
+   "share_sets_case_increase": 0.6998730069140681,
+   "share_sets_control_mean_increase": 0.3694087766332722,
+   "share_sets_contrast_positive": 0.7268237618174122,
+   "did_ci95": [
+    0.8189892144066601,
+    0.8871866328018437
+   ],
+   "case_ratio_ci95": [
+    1.472906040790516,
+    1.5234613945050144
+   ],
+   "ratio_of_ratios_ci95": [
+    1.6104934904790054,
+    1.678540493625535
+   ],
+   "valid_bootstrap_replicates": {
+    "did": 2000,
+    "case_ratio": 2000,
+    "ratio_of_ratios": 2000,
+    "of": 2000
+   }
+  },
+  "old": {
+   "case_base_per_h": 0.08706081557781854,
+   "case_pre_per_h": 0.13811086026057098,
+   "control_base_per_h": 0.054401251117068804,
+   "control_pre_per_h": 0.04941853628709845,
+   "case_ratio": 1.586372231226364,
+   "control_ratio": 0.9084080838646927,
+   "did_per_h": 0.05603275951272283,
+   "ratio_of_ratios": 1.7463211296814636,
+   "share_sets_case_increase": 0.6111189501904897,
+   "share_sets_control_mean_increase": 0.2740228587554678,
+   "share_sets_contrast_positive": 0.6883025257513757,
+   "did_ci95": [
+    0.05389548351441607,
+    0.058128806852923195
+   ],
+   "case_ratio_ci95": [
+    1.5583446402293077,
+    1.6143715564865553
+   ],
+   "ratio_of_ratios_ci95": [
+    1.7064314791682713,
+    1.7841890879855518
+   ],
+   "valid_bootstrap_replicates": {
+    "did": 2000,
+    "case_ratio": 2000,
+    "ratio_of_ratios": 2000,
+    "of": 2000
+   }
+  },
+  "tests_per_draw": {
+   "case_base": 9.300053734551316,
+   "case_pre": 9.459781577603191,
+   "control_base": 9.990774281186324,
+   "control_pre": 10.05384375
+  },
+  "old_vs_specimen": {
+   "mean_draws_specimen_per_h": 0.13362102754652494,
+   "mean_draws_60s_per_h": 0.07213520844112067,
+   "share_windows_equal": 0.24895348290296787,
+   "correlation": 0.9192637206114592
+  }
+ },
+ "profile": {
+  "cases_mean_draws_by_hour_before_event": [
+   0.6455,
+   0.5451,
+   0.3995,
+   0.337,
+   0.3131,
+   0.274,
+   0.25,
+   0.2317,
+   0.222,
+   0.198,
+   0.2074,
+   0.2105,
+   0.2174,
+   0.1991,
+   0.1795,
+   0.1767,
+   0.1697,
+   0.1575,
+   0.1384,
+   0.1518,
+   0.1469,
+   0.1483,
+   0.1398,
+   0.1422,
+   0.1386,
+   0.1666,
+   0.1817,
+   0.1994,
+   0.197,
+   0.1764,
+   0.1676,
+   0.1716,
+   0.1575,
+   0.1733,
+   0.1836,
+   0.1875,
+   0.1926,
+   0.176,
+   0.1719,
+   0.1678,
+   0.1484,
+   0.1484,
+   0.136,
+   0.1398,
+   0.1367,
+   0.1445,
+   0.1307,
+   0.1453
+  ],
+  "cases_share_of_draws_by_clock_hour": [
+   0.0413,
+   0.017,
+   0.0166,
+   0.0242,
+   0.054,
+   0.1215,
+   0.151,
+   0.0965,
+   0.0444,
+   0.0359,
+   0.0348,
+   0.0254,
+   0.0318,
+   0.0356,
+   0.0253,
+   0.0421,
+   0.0323,
+   0.0356,
+   0.0244,
+   0.0291,
+   0.0205,
+   0.0272,
+   0.0165,
+   0.0173
+  ],
+  "controls_mean_draws_by_hour_before_event": [
+   0.0636,
+   0.0715,
+   0.1038,
+   0.1125,
+   0.1102,
+   0.1046,
+   0.0971,
+   0.092,
+   0.0968,
+   0.1089,
+   0.1085,
+   0.1147,
+   0.1094,
+   0.1139,
+   0.1062,
+   0.1133,
+   0.0907,
+   0.0833,
+   0.0813,
+   0.0769,
+   0.0749,
+   0.0747,
+   0.0757,
+   0.0731,
+   0.0736,
+   0.0913,
+   0.1063,
+   0.1252,
+   0.1246,
+   0.1105,
+   0.1078,
+   0.1047,
+   0.0981,
+   0.1158,
+   0.1199,
+   0.1195,
+   0.1271,
+   0.1276,
+   0.1114,
+   0.1057,
+   0.1022,
+   0.0971,
+   0.0909,
+   0.0942,
+   0.0832,
+   0.0836,
+   0.084,
+   0.0889
+  ],
+  "controls_share_of_draws_by_clock_hour": [
+   0.0501,
+   0.0076,
+   0.0067,
+   0.0129,
+   0.0531,
+   0.166,
+   0.2366,
+   0.1505,
+   0.0482,
+   0.0318,
+   0.0253,
+   0.0163,
+   0.0205,
+   0.0236,
+   0.0143,
+   0.0291,
+   0.0196,
+   0.021,
+   0.0123,
+   0.0154,
+   0.0079,
+   0.0157,
+   0.007,
+   0.0085
+  ]
+ },
+ "sensitivity_12h": {
+  "window": "12 h windows",
+  "n_matched_sets": 7087,
+  "n_controls": 14174,
+  "draws": {
+   "case_base_per_h": 0.1639269084238747,
+   "case_pre_per_h": 0.31950519730962795,
+   "control_base_per_h": 0.08945369455811109,
+   "control_pre_per_h": 0.09868421052631579,
+   "case_ratio": 1.9490710852879995,
+   "control_ratio": 1.103187643772593,
+   "did_per_h": 0.14634777291754858,
+   "ratio_of_ratios": 1.7667629766253745,
+   "share_sets_case_increase": 0.6647382531395513,
+   "share_sets_control_mean_increase": 0.4883589671229011,
+   "share_sets_contrast_positive": 0.6899957668971356,
+   "did_ci95": [
+    0.13984466864211467,
+    0.1523389363153191
+   ],
+   "case_ratio_ci95": [
+    1.8980032068388895,
+    2.000012783987143
+   ],
+   "ratio_of_ratios_ci95": [
+    1.7013530544205775,
+    1.8324345974508807
+   ],
+   "valid_bootstrap_replicates": {
+    "did": 2000,
+    "case_ratio": 2000,
+    "ratio_of_ratios": 2000,
+    "of": 2000
+   }
+  },
+  "times": {
+   "case_base_per_h": 0.09090588401298151,
+   "case_pre_per_h": 0.18838483608485018,
+   "control_base_per_h": 0.04742251070034335,
+   "control_pre_per_h": 0.05164385494567518,
+   "case_ratio": 2.072306299314448,
+   "control_ratio": 1.089015621125713,
+   "did_per_h": 0.09325760782653685,
+   "ratio_of_ratios": 1.9029169638285903,
+   "share_sets_case_increase": 0.6396218428107803,
+   "share_sets_control_mean_increase": 0.4269789755891068,
+   "share_sets_contrast_positive": 0.67955411316495,
+   "did_ci95": [
+    0.08965256220309487,
+    0.096814884060016
+   ],
+   "case_ratio_ci95": [
+    2.0197042154003464,
+    2.1276215511523704
+   ],
+   "ratio_of_ratios_ci95": [
+    1.8330407957667252,
+    1.9725455682875073
+   ],
+   "valid_bootstrap_replicates": {
+    "did": 2000,
+    "case_ratio": 2000,
+    "ratio_of_ratios": 2000,
+    "of": 2000
+   }
+  },
+  "tests": {
+   "case_base_per_h": 1.5243521000893656,
+   "case_pre_per_h": 3.0488100277503407,
+   "control_base_per_h": 0.9006043930200837,
+   "control_pre_per_h": 0.9909047081510748,
+   "case_ratio": 2.0000694246241424,
+   "control_ratio": 1.1002663498322258,
+   "did_per_h": 1.4341576125299844,
+   "ratio_of_ratios": 1.817804775115701,
+   "share_sets_case_increase": 0.6878792154649358,
+   "share_sets_control_mean_increase": 0.5078312402991393,
+   "share_sets_contrast_positive": 0.6953576971920418,
+   "did_ci95": [
+    1.367219615728329,
+    1.5000354228399417
+   ],
+   "case_ratio_ci95": [
+    1.940512622861883,
+    2.0606176317207052
+   ],
+   "ratio_of_ratios_ci95": [
+    1.7454306980309777,
+    1.894519583410926
+   ],
+   "valid_bootstrap_replicates": {
+    "did": 2000,
+    "case_ratio": 2000,
+    "ratio_of_ratios": 2000,
+    "of": 2000
+   }
+  },
+  "old": {
+   "case_base_per_h": 0.09042378063120265,
+   "case_pre_per_h": 0.1857979398899393,
+   "control_base_per_h": 0.04731080381919947,
+   "control_pre_per_h": 0.051526268754997405,
+   "case_ratio": 2.0547464239271784,
+   "control_ratio": 1.0891015285199452,
+   "did_per_h": 0.09115869432293873,
+   "ratio_of_ratios": 1.8866435957715662,
+   "share_sets_case_increase": 0.636799774234514,
+   "share_sets_control_mean_increase": 0.4269789755891068,
+   "share_sets_contrast_positive": 0.6777197685903767,
+   "did_ci95": [
+    0.08754247801138236,
+    0.09467496237241899
+   ],
+   "case_ratio_ci95": [
+    2.0033634279727672,
+    2.1086295783783555
+   ],
+   "ratio_of_ratios_ci95": [
+    1.8184728256995009,
+    1.9558637731287865
+   ],
+   "valid_bootstrap_replicates": {
+    "did": 2000,
+    "case_ratio": 2000,
+    "ratio_of_ratios": 2000,
+    "of": 2000
+   }
+  },
+  "tests_per_draw": {
+   "case_base": 9.298974248619182,
+   "case_pre": 9.542286176946856,
+   "control_base": 10.067827801511667,
+   "control_pre": 10.041167709264224
+  },
+  "old_vs_specimen": {
+   "mean_draws_specimen_per_h": 0.14328465265039272,
+   "mean_draws_60s_per_h": 0.07898264427825596,
+   "share_windows_equal": 0.5629791637270118,
+   "correlation": 0.9083753411371417
+  }
+ },
+ "ed_origin_descriptive": {
+  "n": 20,
+  "draws_base_per_h": 0.08541666666666667,
+  "draws_pre_per_h": 0.1875,
+  "tests_base_per_h": 0.63125,
+  "tests_pre_per_h": 1.54375
+ },
+ "runtime_minutes": -21.4,
+ "script_sha256": "1b869172626d2d4972ff2fa3cd0bf8dd5a8a96c71c9b0a2e9671b346c5de89ce"
+}

@@ -1,0 +1,17 @@
+2026-10-31T02:20:47  XS1: compared 20 rows, 0 differing
+2026-10-31T02:20:55  XR1: compared 20 rows, 0 differing
+2026-10-31T02:21:03  XR2: compared 20 rows, 0 differing
+2026-10-31T02:21:11  XR3: compared 20 rows, 0 differing
+2026-10-31T02:21:21  XR4: compared 20 rows, 0 differing
+2026-10-31T02:21:31  XR5: compared 20 rows, 0 differing
+2026-10-31T02:21:41  XR6: compared 20 rows, 0 differing
+2026-10-31T02:21:51  XR7: compared 20 rows, 0 differing
+2026-10-31T02:22:02  XR8: compared 20 rows, 0 differing
+2026-10-31T02:22:12  XR9: compared 20 rows, 0 differing
+2026-10-31T02:22:20  XR10: compared 20 rows, 0 differing
+2026-10-31T02:22:30  XS2: compared 20 rows, 0 differing
+2026-10-31T02:22:39  XN1: compared 20 rows, 0 differing
+2026-10-31T02:22:46  XN2: compared 20 rows, 0 differing
+2026-10-31T02:22:50  P5: compared 260 rows, 0 differing
+2026-10-31T02:22:55  P5FA: compared 260 rows, 0 differing
+2026-10-31T02:22:55  IDENTITY PASSED

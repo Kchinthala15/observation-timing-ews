@@ -1,0 +1,146 @@
+{
+  "run": "a1_G1b",
+  "started": "2026-10-31T03:03:30",
+  "finished": "2026-10-31T03:19:06",
+  "command": "C:\\ews_v322_phase2\\rebuild_v322\\ewsv322\\a1_run.py run --block G1b",
+  "config_file": "Simulation_Rebuild_Config_v3.2.2_Phase2.json",
+  "config_sha256": "0473d4830407f1fde68988d32fb1d2ad14537b815c0fd34492b8391d084950d3",
+  "python": "3.13.14 (tags/v3.13.14:fd17997, Jun 10 2026, 13:03:48) [MSC v.1944 64 bit (AMD64)]",
+  "numpy": "2.5.1",
+  "scipy": "1.18.0",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "seed_block_base": 6000000,
+  "stream_keys_planned_and_checked_unique_before_run": {
+    "err_baseline": 11175314001511125445,
+    "err_inf|step|6.00|primary": 15051970997965419247,
+    "err_pm": 16544848013888305382,
+    "err_reg_N": 9077105611987833258,
+    "err_reg_matched": 18402223848606382870,
+    "err_reg_pre_matched": 17070392724464071826,
+    "indep_trigger": 14487720118109546292,
+    "informative_reduced_N|index|ar1": 1623391861100984756,
+    "informative_reduced_N|index|ou_ss": 12827632960970303973,
+    "informative_reduced_N|index|shuffle": 7119652008343030335,
+    "latent": 15002737520545098377,
+    "pm_times": 13051051703566057602,
+    "poisson_matched|index|ar1": 18121903936421341899,
+    "poisson_matched|index|ou_ss": 13461899063061258772,
+    "poisson_matched|index|shuffle": 9728585145069378322,
+    "regular_N|index|ar1": 14263415831151799387,
+    "regular_N|index|ou_ss": 9750627865935564298,
+    "regular_N|index|shuffle": 2556565730649915720,
+    "schedule|step|6.00|primary": 4654764588834308200,
+    "subsample": 10978909670589031770,
+    "subsample|draw1": 15761616758248641417,
+    "subsample|draw10": 5570859358745744152,
+    "subsample|draw2": 121359991580139281,
+    "subsample|draw3": 17011706529244960320,
+    "subsample|draw4": 10080971577237393699,
+    "subsample|draw5": 72068944064282502,
+    "subsample|draw6": 14352266444834620284,
+    "subsample|draw7": 2598086232151424887,
+    "subsample|draw8": 17306742453737926584,
+    "subsample|draw9": 5433670770745087305,
+    "surrogates": 3343022098856989164,
+    "thin|step|6.00|primary": 6917255231511697037
+  },
+  "streams_used_not_in_plan": [],
+  "code_sha256": {
+    "__init__.py": "671e94e1c38e35b188d30786385b412b2a6f784fd2a6c55dfe405cb4dfb0b773",
+    "a1_arms.py": "1544d3325299d9c6146078027013b6b96b62a07ca419fc4ccb2d4fc0509d30b9",
+    "a1_latent.py": "6e08534594ec248ac7aa671d8bc1569372d4a6f1ad3884cc81530a360457dcbf",
+    "a1_nulls.py": "615ca86e75683112e2e6df430f78bec310b4f5671c255f1edfeceae26923dba0",
+    "a1_patient.py": "a47a74cd7206c39eb4d684026e2eead9cf0e89e68d0692bcaa1281fe464cc2ff",
+    "a1_run.py": "e9c7888f99cff91c03bce55573b75ba9be559e0586a13cd91c3fa79ae7cd8854",
+    "a1_spec.py": "ff9e43d73887ca442fe50d86f4395493040e06b6b2b659791c2badf5d3c39a5a",
+    "analysis.py": "041454eaac23c26118b81f75e6f7fe5e919f932dcabd7e07ef38e8d92663cf54",
+    "arms.py": "220329868f5d4c6782f930f2b9bef03c1550e43484d463efa05e4db2c49deed6",
+    "explore.py": "7161cf94757b0967c03b4bdd189b304c452ca2420d5eeb3b51b0a853d35c9d5c",
+    "kalman.py": "7be64b725ca57617212d693238c973d59f61e2ffc5d666c8a5dae3472816a8c5",
+    "latent.py": "73881148da00cba90ba084b29910b666c0a79e7115cb192e615f56004c51fb63",
+    "nulls.py": "169a332ac798d5dc4c5c90b92571f7bee311257a71827c8d21e66e8cad58b481",
+    "patient.py": "d8868f4725c1a52a992f8c18a65a3b75a9a0e938eaa637963aee01a52f49187e",
+    "phase2.py": "3f72e6deaa058638099f8a979af5e605e4cbb07f5084c61fc90f8b3c8d39409d",
+    "rng.py": "9a19a5a2b00a0373d48f3dbbbc8055904801ba3e6a6397f570205a0db0ea3708",
+    "run.py": "5fd95e2a979d2f5d6a9d271aceee1e56e5636dcefabc636e34f936edf7100ae5",
+    "schedule.py": "9ff5129206d0f854c4bffcb4e116596e83d5fa3df7d2ecd9dfb8ba702794a028",
+    "spec.py": "bfa7f5a41ea48a5a867485c3c08cdfdedd74258fa65a4f8c7ddc251460860e02",
+    "stats.py": "baf8d3dd1328a77e4fcdd2819e518b16f48d470cf7965efcd66f89029f221fe1"
+  },
+  "outputs_sha256": {
+    "a1_G1b_rows.csv": "e4f58d971505456e95be5450e6fda1093f5c79d45da694117956d811b5c6ba2e"
+  },
+  "stream_identities": {
+    "method": "Generator(PCG64(SeedSequence(entropy=E, spawn_key=S)))",
+    "patient_streams": "E = seed_block_base + patient_id; S = (K(name),) for every planned name except 'surrogates', bootstrap names and '<arm>|<analysis>|<null>' labels",
+    "surrogate_replicates": "E = seed_block_base + patient_id; S = (K('surrogates'), K('<arm>|<analysis>|<null>'), k), k = 0..B-1 (B = 200 in production)",
+    "bootstrap": "E = seed_block_base; S = (K('bootstrap|<model>|<comparison>'),)",
+    "K": "first 16 hex digits of SHA-256(UTF-8 name) as an integer (values listed in stream_keys_planned_and_checked_unique_before_run)"
+  },
+  "a1_block": {
+    "id": "G1b",
+    "role": "secondary_scope",
+    "model": "stable_slow_0.2",
+    "schedule": "step",
+    "m": 6.0,
+    "trigger": "primary",
+    "arms": [
+      "regular_N",
+      "informative_reduced_N",
+      "poisson_matched"
+    ],
+    "analyses": [
+      "index"
+    ],
+    "nulls": [
+      "ou_ss",
+      "ar1",
+      "shuffle"
+    ],
+    "seed_base": 6000000,
+    "patient_ids": [
+      0,
+      1999
+    ]
+  },
+  "record": {
+    "phase": "addendum_A1",
+    "block": "G1b",
+    "role": "secondary_scope",
+    "model": "stable_slow_0.2",
+    "design": {
+      "schedule": "step",
+      "m": 6.0,
+      "trigger": "primary",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "n_variability_draws": 0
+    },
+    "seed_base": 6000000,
+    "patient_ids": [
+      0,
+      1999
+    ],
+    "n_patients": 2000,
+    "rows": 18000,
+    "tipped": 0,
+    "minutes": 15.6,
+    "rows_sha256": "e4f58d971505456e95be5450e6fda1093f5c79d45da694117956d811b5c6ba2e",
+    "a1_sha256": "9aff4ef745296e32b6b888b3cc32d08861aec3affe71a8153a88409922b4d7e5",
+    "config_sha256": "0473d4830407f1fde68988d32fb1d2ad14537b815c0fd34492b8391d084950d3",
+    "parent_config_sha256": "9a245eb092a47bc5e2851f0b681ec439c1a72ab34ed2fe3dedf63b9b29bff482",
+    "written": "2026-10-31T03:19:06"
+  },
+  "a1_sha256": "9aff4ef745296e32b6b888b3cc32d08861aec3affe71a8153a88409922b4d7e5"
+}

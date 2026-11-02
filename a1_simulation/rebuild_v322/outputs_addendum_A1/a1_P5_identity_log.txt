@@ -1,0 +1,2 @@
+2026-10-31T19:16:51  P5 vs explore_E1__all: 26000 rows compared, 0 differing -> PASSED
+2026-10-31T21:50:28  P5 vs explore_E1__all: 26000 rows compared, 0 differing -> PASSED

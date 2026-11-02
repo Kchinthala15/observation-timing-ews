@@ -1,0 +1,103 @@
+section,registry_key,value,frozen_source (stream / JSON field),context in text
+Abstract,F1_tot_ou_ss_var,−12.2,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|ou_ss|var,…mparisons where calibration was inadequate or conservative. Uneven timing reduced variance-based detection by −12.2 percentage points (95% CI {F1_tot_ou_ss…
+Abstract,F1_tot_ou_ss_var_ci,−14.8 to −9.6,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|ou_ss|var,… conservative. Uneven timing reduced variance-based detection by −12.2 percentage points (95% CI −14.8 to −9.6) for a timing-aware state-space test. A…
+Abstract,F1_irr_ou_ss_var,−10.8,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|ou_ss|var,"…ss_var_ci}) for a timing-aware state-space test. At twofold escalation, irregular timing itself accounted for −10.8 points (−13.5 to −8.1) and esca…"
+Abstract,F1_irr_ou_ss_var_ci,−13.5 to −8.1,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|ou_ss|var,"…are state-space test. At twofold escalation, irregular timing itself accounted for −10.8 points (−13.5 to −8.1) and escalation added {F1_esc_ou_ss_var…"
+Abstract,F1_esc_ou_ss_var,−1.4,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ou_ss|var,… irregular timing itself accounted for −10.8 points (−13.5 to −8.1) and escalation added −1.4 (−4.2 to 1.4); escalation-rel…
+Abstract,F1_esc_ou_ss_var_ci,−4.2 to 1.4,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ou_ss|var,…self accounted for −10.8 points (−13.5 to −8.1) and escalation added −1.4 (−4.2 to 1.4); escalation-related loss grew with lar…
+Abstract,H1_adj_G1a,+6.9,size_adjusted G1a,…rger for timestamp-blind tests. The timing-aware test detected more than a conservative timestamp-blind test (+6.9 points at equal false-alarm rates; 97.5…
+Abstract,H1_adj_G1a_ci,5.0 to 8.7,size_adjusted,…ected more than a conservative timestamp-blind test (+6.9 points at equal false-alarm rates; 97.5% CI 5.0 to 8.7). Binning and interpolation improved va…
+Abstract,E2_ir_var,−9.0,E2,"…continuous-time estimator reached the even-sampling benchmark with calibrated false-alarm rates, yet detected −9.0 points less on uneven than on even data…"
+Abstract,M1_did,+0.087,M1,"…ws rose before ward-to-intensive-care escalation relative to matched ward controls (difference-in-differences +0.087 per hour, 95% CI 0.084 to 0.091). Early-wa…"
+Abstract,M1_did_ci,0.084 to 0.091,M1,"…ensive-care escalation relative to matched ward controls (difference-in-differences +0.087 per hour, 95% CI 0.084 to 0.091). Early-warning analyses of clinical da…"
+3 | RESULTS,g1a_ouss_min,3.4,calibration G1a ou_ss,…The gate was passed: false-alarm rates of the timing-aware test in the stable slow process were 3.4–5.0% across the six arm-by-i…
+3 | RESULTS,g1a_ouss_max,5.0,calibration G1a ou_ss,"…he gate was passed: false-alarm rates of the timing-aware test in the stable slow process were 3.4–5.0% across the six arm-by-indicator cells,…"
+3 | RESULTS,g1a_ar1_unev_var,2.4,calibration,"…ess blocks and of the stable process with θ = 1.2. The AR(1) test was LOW for variance under uneven sampling (2.4% false alarms), that is, conservative; …"
+3 | RESULTS,F1_det_reg_ouss_var,55.7,F1,"…In the fresh confirmatory cohort, variance-based detection with the timing-aware test was 55.7% under even sampling and {F1_det_inf_ou…"
+3 | RESULTS,F1_det_inf_ouss_var,43.6,F1,"…ohort, variance-based detection with the timing-aware test was 55.7% under even sampling and 43.6% under uneven sampling at the same numb…"
+3 | RESULTS,F1_tot_ou_ss_var,−12.2,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|ou_ss|var,"…sampling and 43.6% under uneven sampling at the same number of observations, a difference of −12.2 points (95% CI −14.8 to −9.6); …"
+3 | RESULTS,F1_tot_ou_ss_var_ci,−14.8 to −9.6,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|ou_ss|var,"…% under uneven sampling at the same number of observations, a difference of −12.2 points (95% CI −14.8 to −9.6); for autocorrelation the difference wa…"
+3 | RESULTS,F1_tot_ou_ss_ac,−12.1,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|ou_ss|ac,…ifference of −12.2 points (95% CI −14.8 to −9.6); for autocorrelation the difference was −12.1 points (−14.8 to −9.3). Decompos…
+3 | RESULTS,F1_tot_ou_ss_ac_ci,−14.8 to −9.3,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|ou_ss|ac,…_var} points (95% CI −14.8 to −9.6); for autocorrelation the difference was −12.1 points (−14.8 to −9.3). Decomposition showed that most of thi…
+3 | RESULTS,F1_irr_ou_ss_var,−10.8,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|ou_ss|var,"…}). Decomposition showed that most of this loss was due to irregular timing (random-time minus even: variance −10.8, 95% CI −13.5 to −8.1), with a …"
+3 | RESULTS,F1_irr_ou_ss_var_ci,−13.5 to −8.1,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|ou_ss|var,"…at most of this loss was due to irregular timing (random-time minus even: variance −10.8, 95% CI −13.5 to −8.1), with a small and non-significant addi…"
+3 | RESULTS,F1_esc_ou_ss_var,−1.4,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ou_ss|var,"…ar_ci}), with a small and non-significant additional loss from escalation at m = 2 (uneven minus random-time: −1.4, −4.2 to 1.4; Holm-adjusted p…"
+3 | RESULTS,F1_esc_ou_ss_var_ci,−4.2 to 1.4,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ou_ss|var,"…l and non-significant additional loss from escalation at m = 2 (uneven minus random-time: −1.4, −4.2 to 1.4; Holm-adjusted p = {F1_esc_ou_ss_var_ho…"
+3 | RESULTS,F1_esc_ou_ss_var_holm,1.00,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ou_ss|var,"…m escalation at m = 2 (uneven minus random-time: −1.4, −4.2 to 1.4; Holm-adjusted p = 1.00). For the timestamp-blind AR(1) test th…"
+3 | RESULTS,F1_esc_ar1_var,−9.4,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ar1|var,"…djusted p = 1.00). For the timestamp-blind AR(1) test the escalation component was larger (−9.4, −12.2 to −6.6).…"
+3 | RESULTS,F1_esc_ar1_var_ci,−12.2 to −6.6,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ar1|var,"…c_ou_ss_var_holm}). For the timestamp-blind AR(1) test the escalation component was larger (−9.4, −12.2 to −6.6).…"
+3 | RESULTS,dose_escalation_ou_ss_var_m1p5,+0.9,dose_response,"… escalation. Across m = 1.5, 3, 4 and 6, the escalation component for variance with the timing-aware test was +0.9, −3.5, {dos…"
+3 | RESULTS,dose_escalation_ou_ss_var_m3p0,−3.5,dose_response,"…and 6, the escalation component for variance with the timing-aware test was +0.9, −3.5, −6.4 and {…"
+3 | RESULTS,dose_escalation_ou_ss_var_m4p0,−6.4,dose_response,"…r variance with the timing-aware test was +0.9, −3.5, −6.4 and −7.9 po…"
+3 | RESULTS,dose_escalation_ou_ss_var_m6p0,−7.9,dose_response,"… was +0.9, −3.5, −6.4 and −7.9 points (mean per-patient slope {dose_es…"
+3 | RESULTS,dose_escalation_ou_ss_var,−6.6,dose_response,"…r_m3p0}, −6.4 and −7.9 points (mean per-patient slope −6.6 points per unit increase in log m, 95% …"
+3 | RESULTS,dose_escalation_ou_ss_var_ci,−9.5 to −3.7,dose_response,"…ar_m6p0} points (mean per-patient slope −6.6 points per unit increase in log m, 95% CI −9.5 to −3.7). Whether escalation responded to the p…"
+3 | RESULTS,SD_diff,−4.3,state_dependence,"…ent’s own readings or occurred at random times did not measurably change the escalation component (difference −4.3 points, 95% CI −9.1 to 0.4); the results th…"
+3 | RESULTS,SD_ci,−9.1 to 0.4,state_dependence,"…urred at random times did not measurably change the escalation component (difference −4.3 points, 95% CI −9.1 to 0.4); the results therefore concern a rise …"
+3 | RESULTS,H1_det_ouss,43.6,F1,"…Under uneven sampling, variance-based detection was 43.6% with the timing-aware test and {H1_det…"
+3 | RESULTS,H1_det_ar1,31.5,F1,"…Under uneven sampling, variance-based detection was 43.6% with the timing-aware test and 31.5% with the AR(1) test (H1: +12.1 poin…"
+3 | RESULTS,H1_raw,+12.1,confirmatory_F1 ar1 var H1,"…ance-based detection was 43.6% with the timing-aware test and 31.5% with the AR(1) test (H1: +12.1 points, 97.5% CI 10.3 to 13.9). Because …"
+3 | RESULTS,H1_raw_ci,10.3 to 13.9,confirmatory_F1,"…H1_det_ouss}% with the timing-aware test and 31.5% with the AR(1) test (H1: +12.1 points, 97.5% CI 10.3 to 13.9). Because the AR(1) comparator was cons…"
+3 | RESULTS,H1_adj_G1a,+6.9,size_adjusted G1a,"…servative, the size-adjusted analysis is the basis of interpretation: at equal false-alarm rates the gain was +6.9 points (97.5% CI 5.0 to 8.7; with …"
+3 | RESULTS,H1_adj_G1a_ci,5.0 to 8.7,size_adjusted,…nalysis is the basis of interpretation: at equal false-alarm rates the gain was +6.9 points (97.5% CI 5.0 to 8.7; with the θ = 1.2 reference {H1_adj_XN2…
+3 | RESULTS,H1_adj_XN2,+7.0,size_adjusted XN2,"…qual false-alarm rates the gain was +6.9 points (97.5% CI 5.0 to 8.7; with the θ = 1.2 reference +7.0, 5.3 to 8.6). The gain was larger …"
+3 | RESULTS,H1_adj_XN2_ci,5.3 to 8.6,size_adjusted,"…rm rates the gain was +6.9 points (97.5% CI 5.0 to 8.7; with the θ = 1.2 reference +7.0, 5.3 to 8.6). The gain was larger under uneven than…"
+3 | RESULTS,H2_raw,+11.4,confirmatory_F1,"… 1.2 reference +7.0, 5.3 to 8.6). The gain was larger under uneven than under even sampling (H2: +11.4, 97.5% CI 9.2 to 13.7; size-adjusted {H…"
+3 | RESULTS,H2_raw_ci,9.2 to 13.7,confirmatory_F1,"…adj_XN2}, 5.3 to 8.6). The gain was larger under uneven than under even sampling (H2: +11.4, 97.5% CI 9.2 to 13.7; size-adjusted +6.2, {H2_adj_G1…"
+3 | RESULTS,H2_adj_G1a,+6.2,size_adjusted G1a,"… The gain was larger under uneven than under even sampling (H2: +11.4, 97.5% CI 9.2 to 13.7; size-adjusted +6.2, 3.9 to 8.5). Both hypotheses were…"
+3 | RESULTS,H2_adj_G1a_ci,3.9 to 8.5,size_adjusted,"…larger under uneven than under even sampling (H2: +11.4, 97.5% CI 9.2 to 13.7; size-adjusted +6.2, 3.9 to 8.5). Both hypotheses were supported. Acros…"
+3 | RESULTS,n_scen,13,S_Q3 gains incl F1,"…7.5% CI 9.2 to 13.7; size-adjusted +6.2, 3.9 to 8.5). Both hypotheses were supported. Across all 13 scenarios the raw gain ranged from {sce…"
+3 | RESULTS,scen_gain_min,+10.0,S_Q3,"…1a}, 3.9 to 8.5). Both hypotheses were supported. Across all 13 scenarios the raw gain ranged from +10.0 to +17.8 points with every in…"
+3 | RESULTS,scen_gain_max,+17.8,S_Q3,…}). Both hypotheses were supported. Across all 13 scenarios the raw gain ranged from +10.0 to +17.8 points with every interval above zero (…
+3 | RESULTS,XS2_gain,+11.9,XS2 rule,"…n_max} points with every interval above zero (Table 3), including the scenario with slowing and a level drop (+11.9). The timing-aware test did not improve…"
+3 | RESULTS,AC_H1_adj_G1a,+0.3,ar1 ac adj,"…level drop (+11.9). The timing-aware test did not improve autocorrelation-based detection (size-adjusted +0.3, 95% CI −0.9 to 1.4).…"
+3 | RESULTS,AC_H1_adj_G1a_ci,−0.9 to 1.4,ar1 ac adj,"… The timing-aware test did not improve autocorrelation-based detection (size-adjusted +0.3, 95% CI −0.9 to 1.4).…"
+3 | RESULTS,P5_cls_ar1_rep_var_GENUINE_RECOVERY,11,P5 classes,"…With the AR(1) test applied after regularisation, 11 of 13 representations recovered varianc…"
+3 | RESULTS,P5_ref_ar1_index_unev,32.0,P5 recovery rate_B (index ar1),"…of 13 representations recovered variance-based detection relative to the AR(1) test on the raw uneven series (32.0%), as did {P5_cls_shuffle_rep_var_GENUI…"
+3 | RESULTS,P5_cls_shuffle_rep_var_GENUINE_RECOVERY,12,P5 classes,"…riance-based detection relative to the AR(1) test on the raw uneven series (32.0%), as did 12 of 13 with shuffle surrogates, at calib…"
+3 | RESULTS,P5_ref_ouss_index_unev,45.3,P5 h2h rate_B,…arm rates (Table 4). Three representations detected more than the timing-aware test on the raw uneven series (45.3%): 120 bins with interpolation of empty…
+3 | RESULTS,P5_ir_min_ar1,−8.2,P5 inf-reg,…ess than the AR(1) test on the raw series. No representation removed the uneven-timing penalty: each detected −8.2 to −24.4 points less on uneve…
+3 | RESULTS,P5_ir_max_ar1,−24.4,P5 inf-reg,…test on the raw series. No representation removed the uneven-timing penalty: each detected −8.2 to −24.4 points less on uneven than on even data…
+3 | RESULTS,P5_ir_min_sh,−8.9,P5 inf-reg,…ch detected −8.2 to −24.4 points less on uneven than on even data with AR(1) surrogates (−8.9 to −17.5 with shuffle surrogat…
+3 | RESULTS,P5_ir_max_sh,−17.5,P5 inf-reg,…_min_ar1} to −24.4 points less on uneven than on even data with AR(1) surrogates (−8.9 to −17.5 with shuffle surrogates). No representa…
+3 | RESULTS,P5_cls_ar1_rep_ac_NO_RECOVERY,13,P5 classes,…_sh} to −17.5 with shuffle surrogates). No representation recovered autocorrelation-based detection (13 of 13 with AR(1) surrogates; {P5_cls_sh…
+3 | RESULTS,P5_cls_shuffle_rep_ac_NO_RECOVERY,11,P5 classes,"…ation recovered autocorrelation-based detection (13 of 13 with AR(1) surrogates; 11 of 13 with shuffle surrogates, the othe…"
+3 | RESULTS,P5_cls_shuffle_rep_ac_IMPROVEMENT_FA_CONTROL_NOT_ESTABLISHED,2,P5 classes,"…RY} of 13 with AR(1) surrogates; 11 of 13 with shuffle surrogates, the other 2 improving without established false-ala…"
+3 | RESULTS,P5FA_total,104,calibration P5FA,…shuffle_rep_ac_IMPROVEMENT_FA_CONTROL_NOT_ESTABLISHED} improving without established false-alarm control). Of 104 false-alarm labels for the representati…
+3 | RESULTS,P5FA_n_CALIBRATED,96,calibration P5FA,"…proving without established false-alarm control). Of 104 false-alarm labels for the representations, 96 were CALIBRATED and 2 LOW; a…"
+3 | RESULTS,P5FA_n_LOW,2,calibration P5FA,"…control). Of 104 false-alarm labels for the representations, 96 were CALIBRATED and 2 LOW; all 5 HIG…"
+3 | RESULTS,P5FA_n_HIGH_NOT_EXCLUDED,5,calibration P5FA,"…al} false-alarm labels for the representations, 96 were CALIBRATED and 2 LOW; all 5 HIGH_NOT_EXCLUDED labels and the single…"
+3 | RESULTS,E2_det_ct_unev_var,54.2,E2,"…On uneven data the continuous-time estimator detected 54.2% for variance, +10.6 points…"
+3 | RESULTS,E2_recovery_var,+10.6,S_Q2_E2,"…On uneven data the continuous-time estimator detected 54.2% for variance, +10.6 points more than the timing-aware test …"
+3 | RESULTS,E2_recovery_var_ci,5.4 to 15.8,S_Q2_E2,"…t_unev_var}% for variance, +10.6 points more than the timing-aware test on the raw series (95% CI 5.4 to 15.8), and 38.0% for autocorr…"
+3 | RESULTS,E2_det_ct_unev_ac,38.0,E2,"…+10.6 points more than the timing-aware test on the raw series (95% CI 5.4 to 15.8), and 38.0% for autocorrelation (+12.0,…"
+3 | RESULTS,E2_recovery_ac,+12.0,S_Q2_E2,"…ing-aware test on the raw series (95% CI 5.4 to 15.8), and 38.0% for autocorrelation (+12.0, 6.8 to 17.0); both were classi…"
+3 | RESULTS,E2_recovery_ac_ci,6.8 to 17.0,S_Q2_E2,"…the raw series (95% CI 5.4 to 15.8), and 38.0% for autocorrelation (+12.0, 6.8 to 17.0); both were classified as genuine recov…"
+3 | RESULTS,E2_gapbench_var,+1.2,E2,"…e-alarm rates CALIBRATED in both arms. On uneven data it matched the timing-aware test on even data (variance +1.2, 95% CI −4.4 to 6.8; autocorre…"
+3 | RESULTS,E2_gapbench_var_ci,−4.4 to 6.8,E2,"…n both arms. On uneven data it matched the timing-aware test on even data (variance +1.2, 95% CI −4.4 to 6.8; autocorrelation 0.0, {E2_…"
+3 | RESULTS,E2_gapbench_ac,0.0,E2,"… the timing-aware test on even data (variance +1.2, 95% CI −4.4 to 6.8; autocorrelation 0.0, −5.6 to 5.4), and it was the o…"
+3 | RESULTS,E2_gapbench_ac_ci,−5.6 to 5.4,E2,"…test on even data (variance +1.2, 95% CI −4.4 to 6.8; autocorrelation 0.0, −5.6 to 5.4), and it was the only method that recov…"
+3 | RESULTS,E2_ir_var,−9.0,E2,…thod that recovered autocorrelation. It did not remove the uneven-timing penalty: the same estimator detected −9.0 points less on uneven than on even data…
+3 | RESULTS,E2_ir_var_ci,−14.0 to −3.8,E2,…penalty: the same estimator detected −9.0 points less on uneven than on even data for variance (95% CI −14.0 to −3.8) and −5.8 for autocorrelation ({E…
+3 | RESULTS,E2_ir_ac,−5.8,E2,…timator detected −9.0 points less on uneven than on even data for variance (95% CI −14.0 to −3.8) and −5.8 for autocorrelation (−11.0 to −0.4).…
+3 | RESULTS,E2_ir_ac_ci,−11.0 to −0.4,E2,…nts less on uneven than on even data for variance (95% CI −14.0 to −3.8) and −5.8 for autocorrelation (−11.0 to −0.4).…
+3 | RESULTS (3.7),M1_cases,"7,087",M1,"…The analysis included 7,087 ward-to-intensive-care escalations, eac…"
+3 | RESULTS (3.7),M1_controls,"14,174",M1,"…The analysis included 7,087 ward-to-intensive-care escalations, each matched to two controls (14,174 controls), from 215,106 candida…"
+3 | RESULTS (3.7),M1_candidates,"215,106",M1,"…ed 7,087 ward-to-intensive-care escalations, each matched to two controls (14,174 controls), from 215,106 candidate control admissions; matching …"
+3 | RESULTS (3.7),M1_case_base,0.164,M1,…ed the independent continuity check in full (Supporting Information S5). Specimen draws among cases rose from 0.164 per hour at baseline to 0.242 i…
+3 | RESULTS (3.7),M1_case_pre,0.242,M1,"…full (Supporting Information S5). Specimen draws among cases rose from 0.164 per hour at baseline to 0.242 in the final 24 hours, while among cont…"
+3 | RESULTS (3.7),M1_ctrl_base,0.104,M1,"…1_case_base} per hour at baseline to 0.242 in the final 24 hours, while among controls they fell from 0.104 to 0.094. The difference-in-dif…"
+3 | RESULTS (3.7),M1_ctrl_pre,0.094,M1,"…our at baseline to 0.242 in the final 24 hours, while among controls they fell from 0.104 to 0.094. The difference-in-differences was {M1_…"
+3 | RESULTS (3.7),M1_did,+0.087,M1,"…hours, while among controls they fell from 0.104 to 0.094. The difference-in-differences was +0.087 draws per hour (95% CI 0.084 to 0.091), me…"
+3 | RESULTS (3.7),M1_did_ci,0.084 to 0.091,M1,"… fell from 0.104 to 0.094. The difference-in-differences was +0.087 draws per hour (95% CI 0.084 to 0.091), meeting the decision rule, with a rat…"
+3 | RESULTS (3.7),M1_ror,1.63,M1,"…rences was +0.087 draws per hour (95% CI 0.084 to 0.091), meeting the decision rule, with a ratio of ratios of 1.63 (1.59 to 1.66). The 12-hour analysis gav…"
+3 | RESULTS (3.7),M1_ror_ci,1.59 to 1.66,M1,"… +0.087 draws per hour (95% CI 0.084 to 0.091), meeting the decision rule, with a ratio of ratios of 1.63 (1.59 to 1.66). The 12-hour analysis gave +0.146 …"
+3 | RESULTS (3.7),M1_did12,+0.146,M1,"…_ci}), meeting the decision rule, with a ratio of ratios of 1.63 (1.59 to 1.66). The 12-hour analysis gave +0.146 (0.140 to 0.152), and secondary outcomes…"
+3 | RESULTS (3.7),M1_did12_ci,0.140 to 0.152,M1,"…ng the decision rule, with a ratio of ratios of 1.63 (1.59 to 1.66). The 12-hour analysis gave +0.146 (0.140 to 0.152), and secondary outcomes showed the sam…"
+4 | DISCUSSION,F1_tot_ou_ss_var,−12.2,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|ou_ss|var,…data lose detection even when the number of observations is held fixed. With a timing-aware test the loss was −12.2 points for variance and {F1_tot_ou_ss_a…
+4 | DISCUSSION,F1_tot_ou_ss_ac,−12.1,bootstrap|ou_csd|A1|F1|Q1|total(inf-reg)|ou_ss|ac,"… observations is held fixed. With a timing-aware test the loss was −12.2 points for variance and −12.1 for autocorrelation, and it was larger …"
+4 | DISCUSSION,F1_irr_ou_ss_var,−10.8,bootstrap|ou_csd|A1|F1|Q1|irregularity(pm-reg)|ou_ss|var,"… penalty comes from irregular timing: at the primary twofold escalation, irregular timing alone accounted for −10.8 points for variance, while the addition…"
+4 | DISCUSSION,F1_esc_ou_ss_var,−1.4,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ou_ss|var,"…ing alone accounted for −10.8 points for variance, while the additional effect of escalation was −1.4 points and not statistically significan…"
+4 | DISCUSSION,dose_escalation_ou_ss_var_m6p0,−7.9,dose_response,"… and not statistically significant. Escalation-related loss became apparent with larger escalations, reaching −7.9 points at sixfold, and was larger for t…"
+4 | DISCUSSION,F1_esc_ar1_var,−9.4,bootstrap|ou_csd|A1|F1|Q1|escalation(inf-pm)|ar1|var,"…aching −7.9 points at sixfold, and was larger for the timestamp-blind AR(1) test (−9.4 points at twofold). The analytical acco…"
+4 | DISCUSSION,H1_adj_G1a,+6.9,size_adjusted G1a,"…much they recovered. A timing-aware surrogate test detected more than a conservative timestamp-blind test, by +6.9 points at equal false-alarm rates for v…"

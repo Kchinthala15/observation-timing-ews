@@ -1,0 +1,8 @@
+# Versions used for the reported runs
+numpy==2.5.1
+scipy==1.18.0
+pandas==3.0.5
+# Testing and manuscript build (not needed to reproduce results)
+pytest
+matplotlib
+python-docx

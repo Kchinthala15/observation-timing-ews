@@ -1,0 +1,1 @@
+2026-10-31T13:05:03  XR6 vs R6: 1000 rows compared, 0 differing -> PASSED

@@ -1,0 +1,509 @@
+{
+ "plan": "M1 v1.2.2",
+ "seed": 20261101,
+ "bootstrap_resamples": 2000,
+ "demo": true,
+ "software": {
+  "python": "3.13.17",
+  "pandas": "3.0.5",
+  "numpy": "2.5.3"
+ },
+ "cohort": {
+  "n_ward_escalations": 11,
+  "n_controls": 21,
+  "n_ed_escalations": 0,
+  "case_hours_since_admit_median": 131.96444444444444,
+  "control_hours_since_admit_median": 121.81444444444445
+ },
+ "matching": {
+  "elapsed_diff_hours_control_minus_case": {
+   "mean": -0.4738624338624328,
+   "median": -1.9752777777777908,
+   "max_abs": 11.369722222222222,
+   "min": -10.611111111111086,
+   "max": 11.369722222222222,
+   "abs_quantiles_10_25_50_75_90": [
+    1.0802777777777806,
+    1.9752777777777908,
+    3.916666666666657,
+    8.19861111111112,
+    10.611111111111086
+   ],
+   "share_within_12h": 1.0
+  },
+  "case_hours_since_admit_median": 131.96444444444444,
+  "control_hours_since_admit_median": 121.81444444444445,
+  "clock_hour_and_minute_exact_match_share": 1.0,
+  "controls_48h_continuous_ward_share": 1.0,
+  "cases_48h_continuous_ward_share": 1.0,
+  "one_admission_per_control_patient": true,
+  "one_admission_per_case_patient": true,
+  "no_patient_both_case_and_control": true,
+  "cases_with_2_controls": 10,
+  "cases_with_1_control": 1,
+  "cases_with_no_control": 0,
+  "search": "exhaustive over all candidate admissions (no cap)",
+  "candidate_control_admissions": 79,
+  "eligible_patients_per_case_quantiles_0_1_5_10_25_50": [
+   10.0,
+   10.0,
+   10.0,
+   10.0,
+   13.5,
+   20.0
+  ],
+  "available_patients_at_turn_quantiles_0_1_5_10_25_50": [
+   1.0,
+   1.1,
+   1.5,
+   2.0,
+   6.5,
+   10.0
+  ],
+  "cases_no_eligible_control": 0,
+  "cases_eligible_but_all_already_assigned": 0,
+  "cases_one_control_only_one_eligible": 0,
+  "cases_one_control_others_already_assigned": 1,
+  "coverage_share_cases_matched": 1.0,
+  "coverage_share_cases_two_controls": 0.9090909090909091,
+  "method": "risk-set matching on exact clock hour and minute, elapsed-time caliper +/-12 h, up to 2 controls per case, without replacement (each control patient used once); cases processed in seeded random order, candidates examined in seeded random order, first eligible accepted; selection uses transfers only, never laboratory data; v1.2.2: exhaustive eligible-control search, no candidate cap"
+ },
+ "primary_24h": {
+  "window": "24 h windows",
+  "n_matched_sets": 11,
+  "n_controls": 21,
+  "draws": {
+   "case_base_per_h": 0.13636363636363635,
+   "case_pre_per_h": 0.20454545454545456,
+   "control_base_per_h": 0.11553030303030302,
+   "control_pre_per_h": 0.08712121212121211,
+   "case_ratio": 1.5000000000000002,
+   "control_ratio": 0.7540983606557377,
+   "did_per_h": 0.09659090909090909,
+   "ratio_of_ratios": 1.989130434782609,
+   "share_sets_case_increase": 0.7272727272727273,
+   "share_sets_control_mean_increase": 0.18181818181818182,
+   "share_sets_contrast_positive": 0.6363636363636364,
+   "did_ci95": [
+    0.009469696969696984,
+    0.20454545454545459
+   ],
+   "case_ratio_ci95": [
+    0.9545454545454546,
+    2.440290322580644
+   ],
+   "ratio_of_ratios_ci95": [
+    1.124833502406811,
+    3.9887114244451207
+   ],
+   "valid_bootstrap_replicates": {
+    "did": 2000,
+    "case_ratio": 2000,
+    "ratio_of_ratios": 2000,
+    "of": 2000
+   }
+  },
+  "times": {
+   "case_base_per_h": 0.07196969696969696,
+   "case_pre_per_h": 0.125,
+   "control_base_per_h": 0.06249999999999999,
+   "control_pre_per_h": 0.04356060606060606,
+   "case_ratio": 1.7368421052631582,
+   "control_ratio": 0.696969696969697,
+   "did_per_h": 0.07196969696969698,
+   "ratio_of_ratios": 2.4919908466819223,
+   "share_sets_case_increase": 0.6363636363636364,
+   "share_sets_control_mean_increase": 0.2727272727272727,
+   "share_sets_contrast_positive": 0.7272727272727273,
+   "did_ci95": [
+    0.02272727272727272,
+    0.12698863636363586
+   ],
+   "case_ratio_ci95": [
+    1.0868659420289852,
+    2.6928571428571395
+   ],
+   "ratio_of_ratios_ci95": [
+    1.4090224992398903,
+    4.91661137775268
+   ],
+   "valid_bootstrap_replicates": {
+    "did": 2000,
+    "case_ratio": 2000,
+    "ratio_of_ratios": 2000,
+    "of": 2000
+   }
+  },
+  "tests": {
+   "case_base_per_h": 1.3712121212121213,
+   "case_pre_per_h": 1.5303030303030303,
+   "control_base_per_h": 1.115530303030303,
+   "control_pre_per_h": 0.9053030303030304,
+   "case_ratio": 1.1160220994475136,
+   "control_ratio": 0.8115449915110358,
+   "did_per_h": 0.3693181818181818,
+   "ratio_of_ratios": 1.3751820430430657,
+   "share_sets_case_increase": 0.36363636363636365,
+   "share_sets_control_mean_increase": 0.36363636363636365,
+   "share_sets_contrast_positive": 0.45454545454545453,
+   "did_ci95": [
+    -0.4053030303030302,
+    1.2557291666666666
+   ],
+   "case_ratio_ci95": [
+    0.7189643785568748,
+    1.867191539973109
+   ],
+   "ratio_of_ratios_ci95": [
+    0.7491045749016788,
+    2.7669333959847786
+   ],
+   "valid_bootstrap_replicates": {
+    "did": 2000,
+    "case_ratio": 2000,
+    "ratio_of_ratios": 2000,
+    "of": 2000
+   }
+  },
+  "old": {
+   "case_base_per_h": 0.07196969696969696,
+   "case_pre_per_h": 0.125,
+   "control_base_per_h": 0.06249999999999999,
+   "control_pre_per_h": 0.04356060606060606,
+   "case_ratio": 1.7368421052631582,
+   "control_ratio": 0.696969696969697,
+   "did_per_h": 0.07196969696969698,
+   "ratio_of_ratios": 2.4919908466819223,
+   "share_sets_case_increase": 0.6363636363636364,
+   "share_sets_control_mean_increase": 0.2727272727272727,
+   "share_sets_contrast_positive": 0.7272727272727273,
+   "did_ci95": [
+    0.02272727272727272,
+    0.12698863636363586
+   ],
+   "case_ratio_ci95": [
+    1.0868659420289852,
+    2.6928571428571395
+   ],
+   "ratio_of_ratios_ci95": [
+    1.4090224992398903,
+    4.91661137775268
+   ],
+   "valid_bootstrap_replicates": {
+    "did": 2000,
+    "case_ratio": 2000,
+    "ratio_of_ratios": 2000,
+    "of": 2000
+   }
+  },
+  "tests_per_draw": {
+   "case_base": 10.055555555555555,
+   "case_pre": 7.481481481481481,
+   "control_base": 9.610169491525426,
+   "control_pre": 10.391304347826086
+  },
+  "old_vs_specimen": {
+   "mean_draws_specimen_per_h": 0.126953125,
+   "mean_draws_60s_per_h": 0.06966145833333333,
+   "share_windows_equal": 0.171875,
+   "correlation": 0.910828700012477
+  }
+ },
+ "profile": {
+  "cases_mean_draws_by_hour_before_event": [
+   0.3636,
+   0.4545,
+   0.2727,
+   0.6364,
+   0.2727,
+   0.7273,
+   0.4545,
+   0.0,
+   0.3636,
+   0.3636,
+   0.0,
+   0.1818,
+   0.0909,
+   0.0,
+   0.0,
+   0.0,
+   0.0909,
+   0.1818,
+   0.0909,
+   0.0,
+   0.0909,
+   0.2727,
+   0.0,
+   0.0,
+   0.0,
+   0.2727,
+   0.1818,
+   0.0,
+   0.7273,
+   0.1818,
+   0.1818,
+   0.5455,
+   0.1818,
+   0.0909,
+   0.0,
+   0.1818,
+   0.0,
+   0.0,
+   0.0,
+   0.0909,
+   0.0,
+   0.1818,
+   0.1818,
+   0.0,
+   0.0,
+   0.0909,
+   0.0,
+   0.1818
+  ],
+  "cases_share_of_draws_by_clock_hour": [
+   0.0,
+   0.0222,
+   0.0,
+   0.0111,
+   0.0667,
+   0.2222,
+   0.1222,
+   0.1556,
+   0.0333,
+   0.0556,
+   0.0,
+   0.0,
+   0.0333,
+   0.1333,
+   0.0111,
+   0.0222,
+   0.0333,
+   0.0222,
+   0.0333,
+   0.0111,
+   0.0,
+   0.0,
+   0.0111,
+   0.0
+  ],
+  "controls_mean_draws_by_hour_before_event": [
+   0.0952,
+   0.0952,
+   0.0,
+   0.1429,
+   0.2381,
+   0.1429,
+   0.0952,
+   0.0,
+   0.381,
+   0.381,
+   0.1905,
+   0.0,
+   0.0,
+   0.1429,
+   0.0476,
+   0.0,
+   0.0,
+   0.0,
+   0.0952,
+   0.0,
+   0.0,
+   0.0476,
+   0.0476,
+   0.0476,
+   0.0952,
+   0.0952,
+   0.2381,
+   0.3333,
+   0.1429,
+   0.0952,
+   0.0476,
+   0.2381,
+   0.3333,
+   0.0,
+   0.1905,
+   0.1429,
+   0.0,
+   0.0952,
+   0.0,
+   0.0,
+   0.0952,
+   0.1429,
+   0.0952,
+   0.0,
+   0.0952,
+   0.0952,
+   0.0,
+   0.2381
+  ],
+  "controls_share_of_draws_by_clock_hour": [
+   0.0476,
+   0.0,
+   0.0,
+   0.0667,
+   0.0,
+   0.2762,
+   0.2667,
+   0.0476,
+   0.0571,
+   0.019,
+   0.0286,
+   0.0095,
+   0.0476,
+   0.0095,
+   0.0095,
+   0.019,
+   0.0286,
+   0.0,
+   0.019,
+   0.019,
+   0.0095,
+   0.0095,
+   0.0,
+   0.0095
+  ]
+ },
+ "sensitivity_12h": {
+  "window": "12 h windows",
+  "n_matched_sets": 11,
+  "n_controls": 21,
+  "draws": {
+   "case_base_per_h": 0.06818181818181818,
+   "case_pre_per_h": 0.3409090909090909,
+   "control_base_per_h": 0.03409090909090909,
+   "control_pre_per_h": 0.14015151515151514,
+   "case_ratio": 5.0,
+   "control_ratio": 4.111111111111111,
+   "did_per_h": 0.16666666666666669,
+   "ratio_of_ratios": 1.2162162162162162,
+   "share_sets_case_increase": 0.8181818181818182,
+   "share_sets_control_mean_increase": 0.8181818181818182,
+   "share_sets_contrast_positive": 0.8181818181818182,
+   "did_ci95": [
+    0.06439393939393939,
+    0.2954545454545454
+   ],
+   "case_ratio_ci95": [
+    2.6,
+    13.75
+   ],
+   "ratio_of_ratios_ci95": [
+    0.47612781954887234,
+    2.20590770791075
+   ],
+   "valid_bootstrap_replicates": {
+    "did": 2000,
+    "case_ratio": 2000,
+    "ratio_of_ratios": 2000,
+    "of": 2000
+   }
+  },
+  "times": {
+   "case_base_per_h": 0.060606060606060615,
+   "case_pre_per_h": 0.18939393939393942,
+   "control_base_per_h": 0.026515151515151516,
+   "control_pre_per_h": 0.060606060606060615,
+   "case_ratio": 3.125,
+   "control_ratio": 2.285714285714286,
+   "did_per_h": 0.09469696969696971,
+   "ratio_of_ratios": 1.3671874999999998,
+   "share_sets_case_increase": 0.9090909090909091,
+   "share_sets_control_mean_increase": 0.6363636363636364,
+   "share_sets_contrast_positive": 0.7272727272727273,
+   "did_ci95": [
+    0.053030303030303025,
+    0.14772727272727273
+   ],
+   "case_ratio_ci95": [
+    1.9333333333333336,
+    7.333333333333331
+   ],
+   "ratio_of_ratios_ci95": [
+    0.5908685064935064,
+    2.5641666666666665
+   ],
+   "valid_bootstrap_replicates": {
+    "did": 2000,
+    "case_ratio": 2000,
+    "ratio_of_ratios": 2000,
+    "of": 2000
+   }
+  },
+  "tests": {
+   "case_base_per_h": 0.4772727272727273,
+   "case_pre_per_h": 2.583333333333333,
+   "control_base_per_h": 0.2462121212121212,
+   "control_pre_per_h": 1.5643939393939397,
+   "case_ratio": 5.412698412698412,
+   "control_ratio": 6.353846153846155,
+   "did_per_h": 0.7878787878787878,
+   "ratio_of_ratios": 0.8518774741535029,
+   "share_sets_case_increase": 0.8181818181818182,
+   "share_sets_control_mean_increase": 0.8181818181818182,
+   "share_sets_contrast_positive": 0.5454545454545454,
+   "did_ci95": [
+    -0.17045454545454541,
+    1.8825757575757571
+   ],
+   "case_ratio_ci95": [
+    2.289127066115702,
+    23.889743589743585
+   ],
+   "ratio_of_ratios_ci95": [
+    0.07404991663892595,
+    2.6223690720090964
+   ],
+   "valid_bootstrap_replicates": {
+    "did": 2000,
+    "case_ratio": 2000,
+    "ratio_of_ratios": 2000,
+    "of": 2000
+   }
+  },
+  "old": {
+   "case_base_per_h": 0.060606060606060615,
+   "case_pre_per_h": 0.18939393939393942,
+   "control_base_per_h": 0.026515151515151516,
+   "control_pre_per_h": 0.060606060606060615,
+   "case_ratio": 3.125,
+   "control_ratio": 2.285714285714286,
+   "did_per_h": 0.09469696969696971,
+   "ratio_of_ratios": 1.3671874999999998,
+   "share_sets_case_increase": 0.9090909090909091,
+   "share_sets_control_mean_increase": 0.6363636363636364,
+   "share_sets_contrast_positive": 0.7272727272727273,
+   "did_ci95": [
+    0.053030303030303025,
+    0.14772727272727273
+   ],
+   "case_ratio_ci95": [
+    1.9333333333333336,
+    7.333333333333331
+   ],
+   "ratio_of_ratios_ci95": [
+    0.5908685064935064,
+    2.5641666666666665
+   ],
+   "valid_bootstrap_replicates": {
+    "did": 2000,
+    "case_ratio": 2000,
+    "ratio_of_ratios": 2000,
+    "of": 2000
+   }
+  },
+  "tests_per_draw": {
+   "case_base": 7.0,
+   "case_pre": 7.5777777777777775,
+   "control_base": 7.222222222222222,
+   "control_pre": 11.162162162162163
+  },
+  "old_vs_specimen": {
+   "mean_draws_specimen_per_h": 0.13020833333333334,
+   "mean_draws_60s_per_h": 0.07291666666666666,
+   "share_windows_equal": 0.59375,
+   "correlation": 0.9048623739388029
+  }
+ },
+ "runtime_minutes": 0.0,
+ "script_sha256": "1b869172626d2d4972ff2fa3cd0bf8dd5a8a96c71c9b0a2e9671b346c5de89ce"
+}

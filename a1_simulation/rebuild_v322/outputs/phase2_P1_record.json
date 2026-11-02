@@ -1,0 +1,13 @@
+{
+  "phase": "phase2",
+  "block": "P1",
+  "role": "primary",
+  "written": "2026-10-30T19:51:54",
+  "config_sha256": "0473d4830407f1fde68988d32fb1d2ad14537b815c0fd34492b8391d084950d3",
+  "parent_config_sha256": "9a245eb092a47bc5e2851f0b681ec439c1a72ab34ed2fe3dedf63b9b29bff482",
+  "n_patients": 1000,
+  "rows": 50000,
+  "tipped": 0,
+  "minutes": 39.4,
+  "rows_sha256": "2ab887876415bbec73fcd749b4ee2f74548fdb807b97b1684731fc2b03dbfe50"
+}

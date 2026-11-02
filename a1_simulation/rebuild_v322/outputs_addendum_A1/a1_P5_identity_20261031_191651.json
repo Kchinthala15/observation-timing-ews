@@ -1,0 +1,10 @@
+{
+  "block": "P5",
+  "against": "explore_E1__all",
+  "rows_compared": 26000,
+  "rows_differing": 0,
+  "differences": [],
+  "passed": true,
+  "rows_sha256": "b066cc21190d6be878f5af7f7042888d5d18671583e5ac916ca3efef41d3677c",
+  "written": "2026-10-31T19:16:51"
+}

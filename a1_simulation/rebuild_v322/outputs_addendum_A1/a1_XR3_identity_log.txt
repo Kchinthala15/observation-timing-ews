@@ -1,0 +1,1 @@
+2026-10-31T13:04:57  XR3 vs R3: 1000 rows compared, 0 differing -> PASSED

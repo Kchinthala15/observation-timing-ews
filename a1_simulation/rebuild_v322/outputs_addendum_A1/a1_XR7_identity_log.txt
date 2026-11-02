@@ -1,0 +1,1 @@
+2026-10-31T13:05:05  XR7 vs R7: 1000 rows compared, 0 differing -> PASSED

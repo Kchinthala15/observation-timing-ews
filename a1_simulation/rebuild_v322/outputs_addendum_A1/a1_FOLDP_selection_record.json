@@ -1,0 +1,74 @@
+{
+  "written": "2026-10-31T19:18:39",
+  "grid_results": [
+    {
+      "model": "fold_v2|sf=0.05|re=0.05",
+      "sigma_f": 0.05,
+      "r_end": 0.05,
+      "n_enrolled": 300,
+      "tipped": 0,
+      "n_nontipped": 300,
+      "x": 32,
+      "tipping": 0.0,
+      "regular_N_variance_detection": 0.10666666666666667
+    },
+    {
+      "model": "fold_v2|sf=0.05|re=0.10",
+      "sigma_f": 0.05,
+      "r_end": 0.1,
+      "n_enrolled": 300,
+      "tipped": 0,
+      "n_nontipped": 300,
+      "x": 33,
+      "tipping": 0.0,
+      "regular_N_variance_detection": 0.11
+    },
+    {
+      "model": "fold_v2|sf=0.07|re=0.05",
+      "sigma_f": 0.07,
+      "r_end": 0.05,
+      "n_enrolled": 300,
+      "tipped": 3,
+      "n_nontipped": 297,
+      "x": 41,
+      "tipping": 0.01,
+      "regular_N_variance_detection": 0.13804713804713806
+    },
+    {
+      "model": "fold_v2|sf=0.07|re=0.10",
+      "sigma_f": 0.07,
+      "r_end": 0.1,
+      "n_enrolled": 300,
+      "tipped": 0,
+      "n_nontipped": 300,
+      "x": 36,
+      "tipping": 0.0,
+      "regular_N_variance_detection": 0.12
+    },
+    {
+      "model": "fold_v2|sf=0.10|re=0.05",
+      "sigma_f": 0.1,
+      "r_end": 0.05,
+      "n_enrolled": 300,
+      "tipped": 36,
+      "n_nontipped": 264,
+      "x": 56,
+      "tipping": 0.12,
+      "regular_N_variance_detection": 0.21212121212121213
+    },
+    {
+      "model": "fold_v2|sf=0.10|re=0.10",
+      "sigma_f": 0.1,
+      "r_end": 0.1,
+      "n_enrolled": 300,
+      "tipped": 0,
+      "n_nontipped": 300,
+      "x": 49,
+      "tipping": 0.0,
+      "regular_N_variance_detection": 0.16333333333333333
+    }
+  ],
+  "rule": "Pilot seeds only (base 8,000,000), 300 patients per grid point, regular_N arm only, ou_ss null, index analysis. Eligible: tipping <= 5%. Among eligible points choose the one whose regular_N variance detection is closest to 50% and inside [35%, 65%]; ties -> smaller sigma_f, then larger r_end. The informative arm is never computed in the pilot. If no point is eligible, fold_v2 is not run and the fold model is reported as uninformative.",
+  "selected_model": null,
+  "a1_sha256": "9aff4ef745296e32b6b888b3cc32d08861aec3affe71a8153a88409922b4d7e5"
+}

@@ -1,0 +1,9 @@
+[
+  {
+    "block": "E2FA",
+    "deviation": "frozen E3 lists ct|W30 for 2,000 patients (about 69 million window fits). Reduced to patients 0-999; recorded as a deviation. At n = 1,000 the TOST passes for observed rates of 3.4-6.1% (probability of passing 0.94 if the true rate is 5%). n = 1,000 is the target. If the timing pilot projects more than 12 hours, a reduction to n = 500 is allowed only with recorded approval (deviations.json entry before the run). An n = 500 result is STRICTLY DESCRIPTIVE: it cannot establish CALIBRATED status, so ct|W30 cannot be classified as GENUINE_RECOVERY or support any claim of controlled false-alarm rates (TOST at n = 500 passes only for 3.8-5.4%, probability 0.62 at a true 5%).",
+    "source": "Protocol Addendum A1 v1.2, Section 6.7 (entry 1 by protocol)",
+    "number": 1,
+    "recorded": "2026-10-31T02:31:32"
+  }
+]

@@ -1,0 +1,29 @@
+Plan M1 v1.2.2. Reading transfers ...
+    cases: 100,000 admissions checked
+    cases: 200,000 admissions checked
+    cases: 300,000 admissions checked
+    cases: 400,000 admissions checked
+    cases: 500,000 admissions checked
+  ward-origin escalations (one per patient): 7,087; ED-origin (descriptive): 20
+    controls: 100,000 admissions indexed
+    controls: 200,000 admissions indexed
+    controls: 300,000 admissions indexed
+    controls: 400,000 admissions indexed
+    controls: 500,000 admissions indexed
+    candidate control admissions with >=48 h continuous ward time: 215,106
+    matched 2,000 of 7,087 cases
+    matched 4,000 of 7,087 cases
+    matched 6,000 of 7,087 cases
+  matched non-escalated ward controls: 14,174
+  matching: clock exact 1.0, max elapsed gap 12.0 h, unmatched cases 0
+  exhaustive search: no eligible control 0; eligible but all already assigned 0; one control (only one eligible) 0; one control (others already assigned) 0
+  independent 48 h ward check: cases 100%, controls 100%
+Reading labevents in chunks (this is the slow step on the full data) ...
+  lab rows kept: 11,236,328
+
+PRIMARY (draws per hour, distinct specimen_id, 24 h windows)
+  cases:    0.164 -> 0.242
+  controls: 0.104 -> 0.094
+  difference-in-differences: +0.087 per hour, 95% CI [0.08388304877475189, 0.09095901827289404]
+
+Aggregates only written to M1_results_v122\mimic_M1_summary.json. Send that one file.

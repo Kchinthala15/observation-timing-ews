@@ -1,0 +1,13 @@
+{
+  "phase": "phase2",
+  "block": "R7",
+  "role": "sensitivity",
+  "written": "2026-10-30T20:08:42",
+  "config_sha256": "0473d4830407f1fde68988d32fb1d2ad14537b815c0fd34492b8391d084950d3",
+  "parent_config_sha256": "9a245eb092a47bc5e2851f0b681ec439c1a72ab34ed2fe3dedf63b9b29bff482",
+  "n_patients": 500,
+  "rows": 1000,
+  "tipped": 0,
+  "minutes": 0.9,
+  "rows_sha256": "64b7307233016495e65159446a316e8027469a679b180e4e6a7fffa24d9bd2c4"
+}

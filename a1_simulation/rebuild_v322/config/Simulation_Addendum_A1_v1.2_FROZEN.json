@@ -1,0 +1,776 @@
+{
+  "addendum_id": "A1",
+  "version": "1.2-FROZEN",
+  "revision_history": [
+    "1.0 (30 Oct 2026): first proposal.",
+    "1.2 (30 Oct 2026): HIGH split into HIGH_NOT_EXCLUDED (upper limit above 7.5%: control not established) and HIGH (lower limit above 7.5%: demonstrably excess); 'at the cost of excess false alarms' reserved for HIGH. Approved for freezing.",
+    "1.1 (30 Oct 2026): (1) calibration of all compared tests governs every comparative claim, with a pre-specified size-adjusted sensitivity analysis; (2) E2FA n = 1,000 is the target, the n = 500 fallback needs recorded approval and is strictly descriptive; (3) explicit four-way classification of any detection change by its false-alarm status (P5, E1/E3, E2)."
+  ],
+  "status": "FROZEN 30 Oct 2026. The SHA-256 of this file is recorded in Protocol_Addendum_A1_v1.2_FROZEN.pdf and hard-coded in the A1 code; any change requires a new version and a deviations.json entry.",
+  "config_lineage": {
+    "parent_config_sha256": "0473d4830407f1fde68988d32fb1d2ad14537b815c0fd34492b8391d084950d3",
+    "grandparent_config_sha256": "9a245eb092a47bc5e2851f0b681ec439c1a72ab34ed2fe3dedf63b9b29bff482",
+    "rule": "Every parent value is unchanged. This file only ADDS models, arms, nulls and blocks. Completed Phase 2 outputs and the earlier exploratory E1/E3 outputs are never modified."
+  },
+  "scientific_questions": {
+    "Q1": "Does observation timing change detection at matched observation count? (established in Phase 2 P1; replicated here on fresh seeds and decomposed)",
+    "Q2": "Can preprocessing irregular observations into regular representations recover detection, and at what false-alarm cost?",
+    "Q3": "Does a timing-aware significance test (ou_ss) detect better than timestamp-blind tests (ar1, shuffle) under irregular sampling, at controlled false-alarm rates?"
+  },
+  "new_models": {
+    "stable_slow_0.2": {
+      "latent": "stationary OU, theta fixed 0.2, mu 0, sigma 0.3, X(0) ~ N(0, sigma^2/(2*0.2))",
+      "rationale": "median fitted ou_ss theta in P1 transition series is about 0.15-0.19; the timing effect acts in this slow regime, which Phase 1 calibration (theta 1.2) did not cover"
+    },
+    "stable_slow_0.05": {
+      "latent": "stationary OU, theta fixed 0.05 (= theta at the end of the ou_csd transition), mu 0, sigma 0.3, X(0) ~ N(0, sigma^2/(2*0.05))"
+    },
+    "fold_v2": {
+      "latent": "fold model as frozen, with (sigma_f, r_end) chosen from the grid below by the pre-specified pilot rule; r0 = 1, tipping rule unchanged",
+      "grid": {
+        "sigma_f": [
+          0.05,
+          0.07,
+          0.1
+        ],
+        "r_end": [
+          0.05,
+          0.1
+        ]
+      },
+      "selection_rule": "Pilot seeds only (base 8,000,000), 300 patients per grid point, regular_N arm only, ou_ss null, index analysis. Eligible: tipping <= 5%. Among eligible points choose the one whose regular_N variance detection is closest to 50% and inside [35%, 65%]; ties -> smaller sigma_f, then larger r_end. The informative arm is never computed in the pilot. If no point is eligible, fold_v2 is not run and the fold model is reported as uninformative.",
+      "sample_size": "1,400 enrolled (expected >= 1,330 non-tipped at <= 5% tipping). With discordance about 0.40 (P1), the paired 95% CI half-width is about 1.96*sqrt(0.40/1330) = 3.4 points, and power to detect an 8-point paired difference is > 0.99."
+    }
+  },
+  "new_arm": {
+    "poisson_matched": "Same 8 baseline observations; then k_post = N_i - 8 observation times drawn i.i.d. Uniform[15, 100) and sorted (homogeneous Poisson times conditional on their count), stream 'pm_times'; measured with an independent error stream 'err_pm'. Exactly count-matched to regular_N and informative_reduced_N, and independent of the patient's state. Defined for every schedule including smooth."
+  },
+  "new_nulls": {
+    "ar1_rep": "Timestamp-blind analyst pipeline for a representation R: z = R(t, y) (the binned / interpolated series of length L); fit AR(1) to z with the frozen ar1_params rule; generate surrogate z* of length L; compute the window statistics directly on z* (z* is not re-binned). For index this equals the frozen ar1. For fixed_time|W the representation is the raw series on its own timestamps, so ar1_rep is the frozen ar1 (surrogate in observation order assigned to the observed timestamps).",
+    "shuffle_rep": "As ar1_rep but z* = random permutation of z."
+  },
+  "inference": {
+    "detection": "Kendall tau-a > 0 and plus-one Monte Carlo p < 0.05, 200 surrogates; not evaluable (< 6 valid windows) = not detected (frozen)",
+    "false_alarm": "detection under a model with no transition (stable, stable_slow, level_drop_only, noise_only)",
+    "calibration_test": "exact binomial TOST, equivalence bounds 2.5% and 7.5%, alpha 0.05 (90% Clopper-Pearson inside the bounds) - frozen rule",
+    "paired_ci": "patient-level paired bootstrap, 10,000 resamples, percentile; Newcombe (1998) matched-pair score interval as cross-check (frozen)",
+    "confirmatory_ci_level": 0.975,
+    "confirmatory_family": [
+      "H1",
+      "H2"
+    ],
+    "confirmatory_fwer": "Bonferroni over H1 and H2: each judged on its two-sided 97.5% CI (family-wise alpha 0.05)",
+    "secondary": "95% CIs, labelled unadjusted; Holm-adjusted exact McNemar p-values reported within each pre-specified family",
+    "exploratory": "estimates and CIs only; no claims",
+    "margin_pp": 5,
+    "margin_sensitivity_pp": [
+      3,
+      10
+    ],
+    "continuous_outcome": "mean Kendall tau (variance and AC) per arm and paired difference with bootstrap CI, reported for every comparison alongside detection"
+  },
+  "gate": {
+    "G1": "ou_ss passes TOST for variance AND AC in all three arms (regular_N, informative_reduced_N, poisson_matched) in block G1a (stable_slow_0.2, m = 2). Fail -> no Q3 claim; the H1/H2 results are reported as descriptive only."
+  },
+  "calibration_status": {
+    "definition": "For each test (ou_ss, ar1, shuffle, ar1_rep, shuffle_rep, ct), arm and indicator, in each null-process block, from the 90% Clopper-Pearson interval [L, U] of the false-alarm rate: CALIBRATED if L >= 2.5% and U <= 7.5% (the frozen TOST); LOW (conservative) if U <= 7.5% and L < 2.5%; HIGH_NOT_EXCLUDED if U > 7.5% and L <= 7.5% (excess false alarms not ruled out, but not shown either: false-alarm control NOT ESTABLISHED); HIGH if L > 7.5% (false-alarm rate demonstrably above the upper bound). Assigned mechanically from the counts.",
+    "reference_null_blocks_for_Q3": "G1a (slow regime, primary reference) and XN2 (theta = 1.2). A test is CALIBRATED for a Q3 comparison only if it is CALIBRATED in both, in the arm(s) used by the comparison, for the indicator compared.",
+    "reference_null_blocks_for_Q2": "P5FA for ar1_rep / shuffle_rep; E3 for ou_ss representations; E2FA for ct|W30; per representation, arm and indicator."
+  },
+  "comparative_claim_rules": {
+    "Q3_superiority_at_controlled_false_alarms": "Permitted only if H1 (and, for the irregularity-specific wording, H2) is supported AND ou_ss AND the comparator (ar1; shuffle separately) are both CALIBRATED in the arms used (informative_reduced_N for H1; informative_reduced_N and regular_N for H2), for variance.",
+    "comparator_LOW": "Wording becomes: ou_ss detects more than a conservative timestamp-blind test; part of the comparator's loss reflects its below-nominal false-alarm rate. The size-adjusted analysis is reported alongside and the claim is judged on it.",
+    "comparator_HIGH_NOT_EXCLUDED": "No superiority claim at controlled false-alarm rates; the comparator's false-alarm control is reported as not established, and the claim is judged on the size-adjusted analysis.",
+    "comparator_HIGH": "No superiority claim from the raw comparison: the tests are of demonstrably unequal size (comparator above the upper bound); the claim is judged only on the size-adjusted analysis.",
+    "ou_ss_not_CALIBRATED_in_XN2_or_G1b-d": "The claim is restricted to the regimes where ou_ss is CALIBRATED; stated explicitly.",
+    "size_adjusted_sensitivity": "Pre-specified secondary analysis, run for every Q3 comparison and mandatory for interpretation whenever any compared test is not CALIBRATED: for each test and arm, find the largest p-value threshold alpha* on the Monte Carlo grid {k/201} such that the false-alarm rate in G1a (same test, arm, indicator) is <= 5%; re-classify detection in F1 as tau > 0 and p <= alpha*; recompute H1/H2 estimands and their 97.5% CIs. Repeated with XN2 as the reference (sensitivity). The bootstrap does not re-estimate alpha* (stated as a limitation)."
+  },
+  "detection_change_classification": {
+    "applies_to": "every Q2 recovery estimate (P5, E1/E3, E2) and every Q3 gain",
+    "IMPROVEMENT_FA_CONTROL_NOT_ESTABLISHED": "CI lower bound > 0 and the method is HIGH_NOT_EXCLUDED in the matched null block, or its false-alarm result is not available -> reported as 'detection improvement with false-alarm control not established'; never called recovery",
+    "GENUINE_RECOVERY": "CI lower bound > 0 AND the method is CALIBRATED (or LOW) in the matched null block for the same arm(s) and indicator -> may be called recovery; 'material' if the lower bound > +5",
+    "IMPROVEMENT_AT_FALSE_ALARM_COST": "CI lower bound > 0 AND the method is HIGH (false-alarm rate demonstrably above 7.5%: 90% lower bound > 7.5%) -> reported as 'detection improvement at the cost of excess false alarms'; not recovery. This wording is used ONLY for HIGH.",
+    "NO_RECOVERY": "CI includes 0 or lies below it",
+    "note": "Only GENUINE_RECOVERY supports a claim that a method recovers detection. LOW (conservative) methods qualify because their false-alarm rate is below nominal; this is stated wherever it applies."
+  },
+  "hypotheses": {
+    "H1": {
+      "block": "F1",
+      "indicator": "variance",
+      "estimand": "det(informative_reduced_N, index, ou_ss) - det(informative_reduced_N, index, ar1)",
+      "supported_if": "97.5% CI lower bound > 0",
+      "material_if": "97.5% CI lower bound > +5 points"
+    },
+    "H2": {
+      "block": "F1",
+      "indicator": "variance",
+      "estimand": "[det(inf, ou_ss) - det(inf, ar1)] - [det(regular_N, ou_ss) - det(regular_N, ar1)]",
+      "supported_if": "97.5% CI lower bound > 0"
+    },
+    "claim_condition": "Statistical support for H1/H2 is necessary but not sufficient for a claim: the wording is governed by comparative_claim_rules (calibration of BOTH ou_ss and the comparator)."
+  },
+  "seed_blocks": {
+    "phase2_original": 3000000,
+    "confirmatory_fresh": 5000000,
+    "slow_controls": 6000000,
+    "fold_v2_main": 7000000,
+    "fold_v2_pilot": 8000000,
+    "plumbing": 9000000,
+    "rule": "entropy = base + patient_id; blocks with the same base and ids share latent paths (common random numbers). Original-seed blocks must reproduce the completed Phase 2 rows exactly for every arm/analysis/null already run."
+  },
+  "blocks": [
+    {
+      "id": "G1a",
+      "role": "gate",
+      "model": "stable_slow_0.2",
+      "schedule": "step",
+      "m": 2.0,
+      "trigger": "primary",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "seed_base": 6000000,
+      "patient_ids": [
+        0,
+        1999
+      ]
+    },
+    {
+      "id": "G1b",
+      "role": "secondary_scope",
+      "model": "stable_slow_0.2",
+      "schedule": "step",
+      "m": 6.0,
+      "trigger": "primary",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "seed_base": 6000000,
+      "patient_ids": [
+        0,
+        1999
+      ]
+    },
+    {
+      "id": "G1c",
+      "role": "secondary_scope",
+      "model": "stable_slow_0.05",
+      "schedule": "step",
+      "m": 2.0,
+      "trigger": "primary",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "seed_base": 6000000,
+      "patient_ids": [
+        0,
+        1999
+      ]
+    },
+    {
+      "id": "G1d",
+      "role": "secondary_scope",
+      "model": "stable_slow_0.05",
+      "schedule": "step",
+      "m": 6.0,
+      "trigger": "primary",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "seed_base": 6000000,
+      "patient_ids": [
+        0,
+        1999
+      ]
+    },
+    {
+      "id": "F1",
+      "role": "confirmatory",
+      "model": "ou_csd",
+      "schedule": "step",
+      "m": 2.0,
+      "trigger": "primary",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "thinned",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "seed_base": 5000000,
+      "patient_ids": [
+        0,
+        1999
+      ]
+    },
+    {
+      "id": "XS1",
+      "role": "secondary",
+      "base_block": "S1",
+      "model": "ou_csd",
+      "schedule": "step",
+      "m": 2.0,
+      "trigger": "indep",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "thinned",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "seed_base": 3000000,
+      "patient_ids": [
+        0,
+        999
+      ]
+    },
+    {
+      "id": "XR1",
+      "role": "secondary",
+      "base_block": "R1",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "thinned",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "seed_base": 3000000,
+      "patient_ids": [
+        0,
+        999
+      ],
+      "note": "model/schedule/m/trigger exactly as frozen block R1; patients 0-499 must reproduce the frozen R1 rows exactly, patients 500-999 are added for precision"
+    },
+    {
+      "id": "XR2",
+      "role": "secondary",
+      "base_block": "R2",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "thinned",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "seed_base": 3000000,
+      "patient_ids": [
+        0,
+        999
+      ],
+      "note": "model/schedule/m/trigger exactly as frozen block R2; patients 0-499 must reproduce the frozen R2 rows exactly, patients 500-999 are added for precision"
+    },
+    {
+      "id": "XR3",
+      "role": "secondary",
+      "base_block": "R3",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "thinned",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "seed_base": 3000000,
+      "patient_ids": [
+        0,
+        999
+      ],
+      "note": "model/schedule/m/trigger exactly as frozen block R3; patients 0-499 must reproduce the frozen R3 rows exactly, patients 500-999 are added for precision"
+    },
+    {
+      "id": "XR4",
+      "role": "secondary",
+      "base_block": "R4",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "thinned",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "seed_base": 3000000,
+      "patient_ids": [
+        0,
+        999
+      ],
+      "note": "model/schedule/m/trigger exactly as frozen block R4; patients 0-499 must reproduce the frozen R4 rows exactly, patients 500-999 are added for precision"
+    },
+    {
+      "id": "XR5",
+      "role": "secondary",
+      "base_block": "R5",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "thinned",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "seed_base": 3000000,
+      "patient_ids": [
+        0,
+        999
+      ],
+      "note": "model/schedule/m/trigger exactly as frozen block R5; patients 0-499 must reproduce the frozen R5 rows exactly, patients 500-999 are added for precision"
+    },
+    {
+      "id": "XR6",
+      "role": "secondary",
+      "base_block": "R6",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "thinned",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "seed_base": 3000000,
+      "patient_ids": [
+        0,
+        999
+      ],
+      "note": "model/schedule/m/trigger exactly as frozen block R6; patients 0-499 must reproduce the frozen R6 rows exactly, patients 500-999 are added for precision"
+    },
+    {
+      "id": "XR7",
+      "role": "secondary",
+      "base_block": "R7",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "thinned",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "seed_base": 3000000,
+      "patient_ids": [
+        0,
+        999
+      ],
+      "note": "model/schedule/m/trigger exactly as frozen block R7; patients 0-499 must reproduce the frozen R7 rows exactly, patients 500-999 are added for precision"
+    },
+    {
+      "id": "XR8",
+      "role": "secondary",
+      "base_block": "R8",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "thinned",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "seed_base": 3000000,
+      "patient_ids": [
+        0,
+        999
+      ],
+      "note": "model/schedule/m/trigger exactly as frozen block R8; patients 0-499 must reproduce the frozen R8 rows exactly, patients 500-999 are added for precision"
+    },
+    {
+      "id": "XR9",
+      "role": "secondary",
+      "base_block": "R9",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "thinned",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "seed_base": 3000000,
+      "patient_ids": [
+        0,
+        999
+      ],
+      "note": "model/schedule/m/trigger exactly as frozen block R9; patients 0-499 must reproduce the frozen R9 rows exactly, patients 500-999 are added for precision"
+    },
+    {
+      "id": "XR10",
+      "role": "secondary",
+      "base_block": "R10",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "seed_base": 3000000,
+      "patient_ids": [
+        0,
+        999
+      ],
+      "note": "model/schedule/m/trigger exactly as frozen block R10; patients 0-499 must reproduce the frozen R10 rows exactly, patients 500-999 are added for precision"
+    },
+    {
+      "id": "XS2",
+      "role": "secondary",
+      "base_block": "S2",
+      "model": "ou_combined",
+      "schedule": "step",
+      "m": 2.0,
+      "trigger": "primary",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "thinned",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "seed_base": 3000000,
+      "patient_ids": [
+        0,
+        999
+      ]
+    },
+    {
+      "id": "XN1",
+      "role": "secondary_false_alarm",
+      "base_block": "N1",
+      "model": "level_drop_only",
+      "schedule": "step",
+      "m": 2.0,
+      "trigger": "primary",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "seed_base": 3000000,
+      "patient_ids": [
+        0,
+        1999
+      ]
+    },
+    {
+      "id": "XN2",
+      "role": "secondary_false_alarm",
+      "base_block": "N2",
+      "model": "stable",
+      "schedule": "step",
+      "m": 2.0,
+      "trigger": "primary",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "seed_base": 3000000,
+      "patient_ids": [
+        0,
+        1999
+      ]
+    },
+    {
+      "id": "P5",
+      "role": "secondary",
+      "model": "ou_csd",
+      "schedule": "step",
+      "m": 2.0,
+      "trigger": "primary",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N"
+      ],
+      "analyses": [
+        "fixed_time|W20",
+        "fixed_time|W30",
+        "fixed_time|W40",
+        "binned|30|linear_interp",
+        "binned|30|locf",
+        "binned|30|drop",
+        "binned|60|linear_interp",
+        "binned|60|locf",
+        "binned|60|drop",
+        "binned|120|linear_interp",
+        "binned|120|locf",
+        "binned|120|drop",
+        "interp|60"
+      ],
+      "nulls": [
+        "ar1_rep",
+        "shuffle_rep"
+      ],
+      "seed_base": 3000000,
+      "patient_ids": [
+        0,
+        999
+      ],
+      "note": "pairs with E1 (same patients, ou_ss)"
+    },
+    {
+      "id": "P5FA",
+      "role": "secondary_false_alarm",
+      "model": "stable",
+      "schedule": "step",
+      "m": 2.0,
+      "trigger": "primary",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N"
+      ],
+      "analyses": [
+        "fixed_time|W20",
+        "fixed_time|W30",
+        "fixed_time|W40",
+        "binned|30|linear_interp",
+        "binned|30|locf",
+        "binned|30|drop",
+        "binned|60|linear_interp",
+        "binned|60|locf",
+        "binned|60|drop",
+        "binned|120|linear_interp",
+        "binned|120|locf",
+        "binned|120|drop",
+        "interp|60"
+      ],
+      "nulls": [
+        "ar1_rep",
+        "shuffle_rep"
+      ],
+      "seed_base": 3000000,
+      "patient_ids": [
+        0,
+        1999
+      ],
+      "note": "pairs with E3 and N2"
+    },
+    {
+      "id": "E2",
+      "role": "secondary",
+      "frozen_block": "E2",
+      "note": "run exactly as frozen (ct|W30, 500 patients, ou_ss)"
+    },
+    {
+      "id": "E2FA",
+      "role": "secondary_false_alarm",
+      "model": "stable",
+      "schedule": "step",
+      "m": 2.0,
+      "trigger": "primary",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N"
+      ],
+      "analyses": [
+        "ct|W30"
+      ],
+      "nulls": [
+        "ou_ss"
+      ],
+      "seed_base": 3000000,
+      "patient_ids": [
+        0,
+        999
+      ],
+      "deviation": "frozen E3 lists ct|W30 for 2,000 patients (about 69 million window fits). Reduced to patients 0-999; recorded as a deviation. At n = 1,000 the TOST passes for observed rates of 3.4-6.1% (probability of passing 0.94 if the true rate is 5%). n = 1,000 is the target. If the timing pilot projects more than 12 hours, a reduction to n = 500 is allowed only with recorded approval (deviations.json entry before the run). An n = 500 result is STRICTLY DESCRIPTIVE: it cannot establish CALIBRATED status, so ct|W30 cannot be classified as GENUINE_RECOVERY or support any claim of controlled false-alarm rates (TOST at n = 500 passes only for 3.8-5.4%, probability 0.62 at a true 5%)."
+    },
+    {
+      "id": "FOLDP",
+      "role": "pilot",
+      "model": "fold_v2_grid",
+      "schedule": "step",
+      "m": 2.0,
+      "trigger": "primary",
+      "arms": [
+        "regular_N"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss"
+      ],
+      "seed_base": 8000000,
+      "patient_ids": [
+        0,
+        299
+      ]
+    },
+    {
+      "id": "FOLD2",
+      "role": "secondary",
+      "model": "fold_v2",
+      "schedule": "step",
+      "m": 2.0,
+      "trigger": "primary",
+      "arms": [
+        "regular_N",
+        "informative_reduced_N",
+        "thinned",
+        "poisson_matched"
+      ],
+      "analyses": [
+        "index"
+      ],
+      "nulls": [
+        "ou_ss",
+        "ar1",
+        "shuffle"
+      ],
+      "seed_base": 7000000,
+      "patient_ids": [
+        0,
+        1399
+      ]
+    }
+  ],
+  "run_order": [
+    "Stage 0: code, unit tests, plumbing, identity checks, timing pilot (5 patients per block, discarded) -> projected runtime reported for approval",
+    "Stage 1: G1a (gate)",
+    "Stage 2: F1 (confirmatory)",
+    "Stage 3: G1b-d, XN1, XN2, XS1, XR1-XR10, XS2",
+    "Stage 4: P5, P5FA",
+    "Stage 5: FOLDP then FOLD2",
+    "Stage 6: E2, E2FA (only if the timing pilot projects a feasible runtime)"
+  ],
+  "outputs": "outputs_addendum_A1/ only; rows CSV, manifest (config and code SHA-256, seeds, stream plan, software versions, command), immutable record written last, append-only deviations.json"
+}

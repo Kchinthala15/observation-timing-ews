@@ -1,0 +1,354 @@
+{
+  "protocol": "Simulation Rebuild Plan v3.2.2 — settled implementation specification",
+  "status": "PROPOSED FOR FREEZE after code-independent review; no simulation results generated",
+  "time": {
+    "T": 100.0,
+    "dt": 0.02,
+    "transition_start": 15.0,
+    "transition_end": 75.0
+  },
+  "latent": {
+    "ou": {
+      "mu": 0.0,
+      "sigma": 0.3,
+      "theta0": 1.2,
+      "theta_min": 0.05
+    },
+    "combined_level_drop": 2.0,
+    "fold": {
+      "r0": 1.0,
+      "r_end": 0.05,
+      "sigma_f": 0.1,
+      "stop_t": 100.0,
+      "tipping_rule": "For every grid time t in [0,T], use r(t)=r0+(r_end-r0)*q(t) through t=75 and r(t)=r_end=0.05 for t>75. At the first grid time X < -sqrt(r(t)), mark tipped and stop that patient's trajectory immediately; do not compute subsequent values. Non-tipped runs are analysed as a labelled conditional subset.",
+      "r_after_transition": 0.05,
+      "smooth_schedule_reference": "For the smooth oracle schedule only, define the fold model's reference level as the upper stable equilibrium x_ref(t)=+sqrt(r(t)); this is not called mu(t)."
+    },
+    "models": [
+      "ou_csd (primary)",
+      "ou_combined",
+      "fold",
+      "stable",
+      "level_drop_only"
+    ],
+    "time_coordinate": "All processes start at t=0; q(t)=clip((t-15)/(75-15), 0, 1). Transition is linear in q(t).",
+    "ou_equations": {
+      "state_equation": "dX(t) = theta(t) * (mu(t) - X(t)) * dt + sigma * dW(t), sigma=0.3",
+      "discretization": "Euler-Maruyama on the fixed latent grid dt=0.02: X[j+1]=X[j]+theta(t[j])*(mu(t[j])-X[j])*dt+sigma*sqrt(dt)*Z[j], Z[j] iid N(0,1). Use the left endpoint t[j] for coefficients.",
+      "ou_csd_primary": {
+        "theta": "theta(t)=theta0+(theta_min-theta0)*q(t), theta0=1.2, theta_min=0.05",
+        "mu": "mu(t)=0",
+        "initial_state": "X(0) ~ Normal(0, sigma^2/(2*theta0))"
+      },
+      "ou_combined": {
+        "theta": "theta(t)=theta0+(theta_min-theta0)*q(t)",
+        "mu": "mu(t)=-combined_level_drop*q(t), combined_level_drop=2.0",
+        "initial_state": "X(0) ~ Normal(0, sigma^2/(2*theta0))"
+      },
+      "stable": {
+        "theta": "theta(t)=theta0=1.2 for all t",
+        "mu": "mu(t)=0 for all t",
+        "initial_state": "X(0) ~ Normal(0, sigma^2/(2*theta0))"
+      },
+      "level_drop_only": {
+        "theta": "theta(t)=theta0=1.2 for all t",
+        "mu": "mu(t)=-combined_level_drop*q(t), combined_level_drop=2.0",
+        "initial_state": "X(0) ~ Normal(0, sigma^2/(2*theta0))"
+      },
+      "fold": {
+        "state_equation": "dX(t)=(r(t)-X(t)^2)*dt+sigma_f*dW(t), sigma_f=0.1",
+        "r": "r(t)=r0+(r_end-r0)*q(t), r0=1.0, r_end=0.05",
+        "initial_state": "X(0)=+sqrt(r0)=1.0 (deterministic)",
+        "tipping": "At the first grid time t in [0,T] where X(t)<-sqrt(r(t)), with r(t)=r_end=0.05 after t=75, mark tipped and stop that patient fold trajectory immediately. Do not analyse post-tipping values. Analyse non-tipped trajectories only as a clearly labelled conditional subset."
+      },
+      "scope_note": "These are explicit operational definitions for this rebuild, not claims that these are the only possible physiological or bifurcation models. Report the model-specific results separately."
+    }
+  },
+  "measurement_error": {
+    "sd": 0.1,
+    "rule": "one independent N(0, 0.1^2) error per observation event, never per grid step; two events in the same grid interval always get different, independent errors",
+    "coupling": {
+      "baseline": "8 errors drawn once per patient from substream 'err_baseline'; identical in every arm (same times)",
+      "informative": "k-th post-baseline informative event gets error k from substream 'err_inf|<schedule>|<m>|<trigger>'; the reduced arm is a subset of these events and keeps their errors, so shared events carry identical errors",
+      "regular_N": "k-th post-baseline regular time gets error k from substream 'err_reg_N'",
+      "regular_matched": "k-th post-baseline regular time gets error k from substream 'err_reg_matched'",
+      "trigger": "the trigger sees the measured value (latent + that event's error), the same value later analysed"
+    },
+    "stream_construction": "see seeds.streams (single SHA-256 method)"
+  },
+  "baseline": {
+    "n": 8,
+    "times": "15*i/9 for i=1..8 (1.67 ... 13.33)",
+    "shared_by_all_arms": true,
+    "counts_toward_totals": true
+  },
+  "trigger": {
+    "primary": "two consecutive post-baseline measured values < baseline_mean - 1.5*baseline_sd",
+    "sensitivity": [
+      "single crossing",
+      "k=2.0",
+      "k=2.5",
+      "oracle (true state, comparison only)"
+    ],
+    "independent": "escalation time drawn from the empirical primary-trigger escalation-time distribution of the same model and seed block (including the never-escalated proportion, represented as no escalation); drawn from its own stream, ignoring the patient's data",
+    "independent_implementation": {
+      "distribution": "For each latent model and seed block, first construct the empirical categorical distribution of primary-trigger outcomes across the complete corresponding patient cohort: each observed escalation time is a category and no-escalation is an explicit category.",
+      "sampling": "For each patient in the independent-trigger control, draw one outcome with replacement from that empirical categorical distribution using that patient's independent indep_trigger stream. The draw must not use that patient's latent path, measured values, or primary-trigger outcome.",
+      "schedule": "Use the sampled escalation time to switch the observation rate; a no-escalation draw leaves the rate at lambda0 throughout.",
+      "reporting": "Report the empirical source distribution and the realised independent-control distribution, including no-escalation proportion. State that finite-cohort resampling reproduces the marginal distribution in expectation, not exactly in every realised control cohort."
+    }
+  },
+  "schedules": {
+    "lambda0": 0.6,
+    "step": {
+      "m_primary": 2.0,
+      "m_sweep": [
+        1.5,
+        2.0,
+        3.0,
+        4.0,
+        6.0
+      ]
+    },
+    "ramp": {
+      "a": 0.5,
+      "rate_before": "lambda0*exp(a*max(0,(base_mean-last_measured)/base_sd)), capped at m*lambda0",
+      "after": "m*lambda0"
+    },
+    "smooth": {
+      "formula": "rate(t)=c*exp(1.5*(reference_level(t)-X(t))); c is set per patient so the expected post-baseline count is 52. This is an oracle schedule using the true latent state and model-specific reference level; it is not a deployable operational schedule.",
+      "trigger": "none",
+      "reference_level": {
+        "ou_csd": "mu(t)=0",
+        "ou_combined": "mu(t)=-2*q(t)",
+        "stable": "mu(t)=0",
+        "level_drop_only": "mu(t)=-2*q(t)",
+        "fold": "x_ref(t)=+sqrt(r(t)), the upper stable equilibrium branch"
+      }
+    }
+  },
+  "arms": {
+    "count_convention": "informative total = 8 baseline + all post-baseline informative events, so it is always >= 8; N_i = min(60, informative total), hence 8 <= N_i <= 60 for every patient",
+    "regular_N": "8 baseline + (N_i - 8) evenly spaced over [15, T)",
+    "informative_all": "8 baseline + all post-baseline events (descriptive)",
+    "informative_reduced_N": "8 baseline + random (N_i - 8) of the post-baseline events (PRIMARY)",
+    "regular_matched": "8 baseline + (n_inf - 8) evenly spaced over [15, T) (secondary)",
+    "subsampling": "one prespecified random draw per patient (own stream); variability sub-study: 200 patients x 10 draws, primary analysis only",
+    "estimand": "patient-level matched-count comparison: both arms have exactly N_i observations (8 baseline included); N_i may differ between patients and may be below 60. Not described as a universal 60-observation comparison.",
+    "count_reporting": "distribution of N_i (mean, SD, quantiles, % with N_i=60); detection in both arms and paired difference by N_i category: <40, 40-49, 50-59, 60"
+  },
+  "analyses": {
+    "index": {
+      "win_frac": 0.3,
+      "detrend": "local linear vs position",
+      "trend": "Kendall tau-a vs window index"
+    },
+    "elapsed": "same windows, tau vs window-centre time (identity check)",
+    "fixed_time": {
+      "W": [
+        20,
+        30,
+        40
+      ],
+      "positions": 43,
+      "min_obs_per_window": 5,
+      "detrend": "vs time",
+      "start_positions": "43 equally spaced start times including both endpoints 0 and T-W: start_j=j*(T-W)/42, j=0..42."
+    },
+    "binning": {
+      "nbins": [
+        30,
+        60,
+        120
+      ],
+      "empty_bin_rules": [
+        "linear_interp",
+        "locf",
+        "drop"
+      ]
+    },
+    "interpolation": {
+      "grid_points": 60,
+      "method": "linear"
+    },
+    "continuous_time": {
+      "model": "latent OU + Gaussian measurement error, exact Kalman likelihood",
+      "W": 30,
+      "positions": 43,
+      "min_obs_per_window": 8,
+      "theta_grid": "32 log-spaced 0.01-20",
+      "rho_grid": [
+        0,
+        0.05,
+        0.1,
+        0.2,
+        0.4,
+        0.8,
+        1.6,
+        3.2
+      ],
+      "mu": "window mean",
+      "q": "profiled analytically",
+      "boundary_handling": "grid-based maximisation (no convergence failure possible); estimates at a grid edge flagged and counted; windows below min_obs set to missing",
+      "indicators": {
+        "variance": "Fitted latent stationary variance V_inf = Q/(2*theta) from the window-specific stationary OU plus measurement-error Kalman fit.",
+        "autocorrelation": "exp(-theta_hat), interpreted as the fitted latent OU autocorrelation over one time unit. Kendall tau is applied to this window-level indicator series.",
+        "status": "Secondary/exploratory; not covered by Phase 1a/1b calibration. Report grid-edge estimates and ties."
+      }
+    },
+    "pre_escalation": [
+      "For patients with a finite escalation time, analyse the series restricted to observation times t<t_esc; the matched-count version uses the prespecified matched count over [0,t_esc).",
+      "For patients who never escalate, use the full observed series for the pre-escalation analysis and set a never_escalated flag; report these patients separately."
+    ],
+    "pre_min_obs": 10,
+    "thinning": "Post-escalation points kept with probability 1/m using observed t_esc; random draws use the named thinning stream thin|<schedule>|<m>|<trigger>."
+  },
+  "evaluability": {
+    "rule": "fewer than 6 valid window statistics = not evaluable",
+    "required_results": [
+      "primary: not evaluable counted as non-detection",
+      "evaluability rate per arm with 95% Clopper-Pearson CIs, plus paired difference in evaluability with bootstrap CI",
+      "secondary, labelled conditional: detection among patients evaluable in both arms; never substituted for the primary result"
+    ]
+  },
+  "detection": "tau > 0 and one-sided surrogate p < 0.05",
+  "nulls": {
+    "candidates_in_order": [
+      "state-space OU + measurement error at timestamps",
+      "AR(1) in observation order",
+      "value shuffle"
+    ],
+    "surrogates": 200,
+    "selection": "Phase 1a calibration seeds only: stable control (independent trigger) + noise-only control (primary trigger), 2000 patients each; first candidate passing TOST for variance and AC, regular_N and informative_reduced_N arms, both controls; selection written to dated file before Phase 1b/2",
+    "validation": "Phase 1b held-out seeds, 2000 per control, false alarms re-estimated for the selected null",
+    "diagnostics": "standardised Kalman innovations: Ljung-Box (lag 5) on stable controls, reported",
+    "phase1b_rule": {
+      "pass": "selected null passes Phase 1b TOST for variance AND autocorrelation in BOTH primary arms (and both controls) -> proceed to Phase 2 with it",
+      "fail": "If the selected null fails any required Phase 1b TOST, no calibrated primary inferential analysis is permitted. Phase 2 may run only descriptively and all detection rates must be labelled uncalibrated. Report the failure and all candidates' Phase 1a and 1b results. Never switch null methods after Phase 1b or after seeing Phase 2.",
+      "no_switching": "no change of null method after Phase 1b or after seeing any Phase 2 result"
+    },
+    "phase1a_rule": {
+      "pass": "Select the first candidate in candidates_in_order that passes the specified TOST for variance AND autocorrelation in both primary arms and both controls.",
+      "fail": "If no candidate passes Phase 1a, stop the calibrated inferential workflow. Do not proceed to Phase 1b or Phase 2 as a calibrated primary analysis. Report every candidate's Phase 1a results and the failure. Any later exploratory simulation must be separately authorised and labelled uncalibrated.",
+      "freeze": "Write the selected candidate and all Phase 1a results to a dated, immutable freeze record before Phase 1b."
+    },
+    "controls": {
+      "stable_control": "Use the stable latent OU model and independent-trigger observation schedule as already specified.",
+      "noise_only_control": {
+        "latent_truth": "X(t)=0 for all t.",
+        "observed_value": "Y_i=epsilon_i, epsilon_i iid N(0, 0.1^2), one independent error per observation event.",
+        "observation_schedule": "Use the primary two-consecutive-low-measured-values trigger and its associated observation-rate schedule; the trigger sees the measured noise value.",
+        "purpose": "Calibrate false alarms when there is no underlying signal and the trigger/sampling mechanism can respond only to measurement noise."
+      }
+    },
+    "state_space_ou_surrogate": {
+      "fit_data": "Fit separately to each patient's complete analysed series, using its actual observation timestamps and the same statistic pipeline's input series.",
+      "model": "Stationary OU latent process plus independent Gaussian measurement error; constant latent mean mu equal to the analysed series sample mean.",
+      "grid": "Use the configured theta_grid (32 log-spaced values 0.01 to 20) and rho_grid (0, 0.05, 0.1, 0.2, 0.4, 0.8, 1.6, 3.2).",
+      "rho_definition": "rho = R / V_inf, where R is measurement-error variance and V_inf = Q/(2*theta) is the stationary latent-process variance; rho=0 means no measurement error in the fitted surrogate.",
+      "profile": "For each (theta,rho) grid point, maximise the exact irregular-time Gaussian Kalman log-likelihood over positive diffusion variance Q; select the grid point and Q with the largest likelihood. Use stationary latent initial variance V_inf and independent observation-error variance R=rho*V_inf.",
+      "exact_transition": "For each actual timestamp gap delta, latent transition is X_next = mu + exp(-theta*delta)*(X-mu) + eta, eta~N(0, V_inf*(1-exp(-2*theta*delta))).",
+      "generation": "Generate one stationary OU trajectory at the patient's exact observed timestamps using the fitted theta, Q and mu, then add independent N(0,R) measurement errors. Recompute the full analysis statistic identically.",
+      "failure": "If the fit cannot be evaluated numerically, mark the surrogate statistic invalid; invalid surrogates count as exceedances in the one-sided Monte Carlo p-value.",
+      "scope": "This is a stationary fitted null surrogate. Fitting the full series can absorb some transition structure; report this as a property/limitation of the prespecified null, and show the other candidate-null results side by side."
+    },
+    "calibration_scope": "Phase 1a and Phase 1b select and validate the null for the primary index analysis only. Other analysis representations are secondary/exploratory and are not implied to be calibrated by this procedure."
+  },
+  "tost": {
+    "alpha": 0.05,
+    "lower": 0.025,
+    "upper": 0.075,
+    "method": "exact binomial; equivalently 90% Clopper-Pearson CI inside [2.5%, 7.5%]"
+  },
+  "estimand_ci": {
+    "bootstrap": 10000,
+    "unit": "patient",
+    "crosscheck": "paired-proportion (Newcombe) interval",
+    "bootstrap_method": "Paired patient-level nonparametric bootstrap: resample patient IDs with replacement, retaining both arms and all outcomes for each sampled ID; compute the paired detection-rate difference in each of 10,000 bootstrap samples; use the percentile 95% interval. The patient, not the arm-row, is the resampling unit.",
+    "newcombe_crosscheck": "Implement Newcombe's 1998 matched-pair score confidence interval for the difference between paired binomial proportions, using the matched/discordant-pair formulation (not the independent-proportions method). Unit-test against the worked examples and published numerical examples in Newcombe (1998). Record implementation, tests and software version. The patient-level paired bootstrap remains the primary CI; this is a cross-check."
+  },
+  "replicates": {
+    "transition": 1000,
+    "false_alarm": 2000,
+    "robustness": 500,
+    "continuous_time": 500
+  },
+  "seeds": {
+    "phase1a": "1000000 + id",
+    "phase1b": "2000000 + id",
+    "phase2": "3000000 + id",
+    "streams": {
+      "method": "ONE method for every substream: numpy.random.SeedSequence(entropy=patient_seed, spawn_key=(K,)), K = first 16 hex digits of SHA-256(UTF-8 substream name) read as an integer; generator = numpy.random.Generator(numpy.random.PCG64(seed_sequence)). Python's built-in hash() and SeedSequence.spawn() are not used. For nested surrogate keys, k is appended as a final spawn_key element; all spawn_key components are validated as non-negative integers and all full stream identities are recorded in the manifest.",
+      "fixed_substreams": {
+        "latent": 15002737520545098377,
+        "err_baseline": 11175314001511125445,
+        "err_reg_N": 9077105611987833258,
+        "err_reg_matched": 18402223848606382870,
+        "subsample": 10978909670589031770,
+        "indep_trigger": 14487720118109546292,
+        "surrogates": 3343022098856989164,
+        "bootstrap": 3691831142125283944
+      },
+      "templated_substreams": {
+        "err_inf|<schedule>|<m>|<trigger>": "informative-arm measurement errors; name built with m written to 2 decimals (e.g. 'err_inf|step|2.00|primary'), K from SHA-256 of that full name",
+        "schedule|<schedule>|<m>|<trigger>": "event times for that schedule (same naming rule)"
+      },
+      "check": "spawn keys of all names used in a run are written to the run manifest and checked for uniqueness before the run starts",
+      "additional_streams": {
+        "thinning": "thin|<schedule>|<m>|<trigger>; patient seed entropy, K from SHA-256 of full name.",
+        "subsampling_variability": "subsample|draw<k>; patient seed entropy, K from SHA-256 of full name; k=1..10, separate from the single primary subsample stream.",
+        "surrogates": "For patient-level surrogate draws, spawn_key=(K('surrogates'), K('<arm>|<analysis>|<null>'), k), with patient seed as entropy; k is the zero-based surrogate replicate index.",
+        "bootstrap": "Cohort-level generator: entropy is the phase-block base seed (1,000,000 for Phase 1a, 2,000,000 for Phase 1b, 3,000,000 for Phase 2); spawn_key=(K('bootstrap|<model>|<comparison>'),). No patient seed is used.",
+        "err_reg_pre_matched": "err_reg_pre_matched; patient seed entropy, K from SHA-256 of this exact stream name. Used for regular matched-count pre-escalation arm.",
+        "elapsed_identity": "Elapsed-time analysis reuses the exact index-analysis surrogate series and surrogate stream for the same arm and null, because it is an identity check on the same ordered window statistics; do not generate independent elapsed-time surrogates."
+      }
+    }
+  },
+  "software": "Python 3, numpy, scipy; versions recorded in each run manifest",
+  "observation_mapping": {
+    "latent_at_time_t": "linear interpolation between the two neighbouring fine-grid latent values (dt=0.02); observation times stay continuous and are never rounded to the grid",
+    "approximation_note": "omitted Brownian-bridge variance is at most sigma^2*dt/4 = 0.00045, about 1% of the smallest stationary variance (0.0375 at theta0=1.2); reported in Methods"
+  },
+  "surrogates": {
+    "replicates_per_test": 200,
+    "one_sided_p_value": "p=(1 + count(T_surrogate >= T_observed))/(B+1), B=200; ties count against detection.",
+    "detection_rule": "Detection iff tau>0 and p<0.05. The plus-one correction is used; do not use p=rank/B.",
+    "statistic_direction": "The test statistic is the one-sided Kendall tau statistic in the prespecified increasing direction.",
+    "reproducibility": "Surrogate replicate k uses a deterministic child generator keyed by the patient's surrogate stream and replicate index; do not reseed from global RNG.",
+    "invalid_statistic_rule": "If a surrogate statistic cannot be computed, count it as an exceedance (conservative); report the number of invalid surrogates. If all surrogates are invalid, p=1 and the patient is not detected."
+  },
+  "analysis_definitions": {
+    "phase1a_failure": "No candidate null passes all prespecified calibration TOSTs: stop calibrated inferential workflow.",
+    "phase1b_failure": "Selected null fails any required held-out TOST: no calibrated primary inferential analysis; Phase 2, if run, is descriptive and labelled uncalibrated.",
+    "index_vs_elapsed": "For identical ordered window statistics and strictly increasing window-centre timestamps, Kendall tau against window index and against elapsed centre time are mathematically identical (up to numerical/tie handling). Treat elapsed-time analysis as an identity/sanity check, not independent evidence.",
+    "primary_count_comparison": "For each patient, both primary arms contain exactly Ni observations, including the same 8 baseline events; Ni=min(60, informative total). Report paired results overall and by prespecified Ni category.",
+    "non_evaluable": "Primary: not evaluable is non-detection. Conditional both-arm-evaluable analysis is secondary only.",
+    "multiplicity": "Variance and autocorrelation are separate prespecified outcomes. Report both, without selecting whichever is more favourable. Any additional sensitivity analyses are labelled secondary/exploratory.",
+    "calibration_scope": "Phase 1a/1b calibration applies to primary index analysis only. No calibration claim for fixed-time, binned, interpolated or continuous-time analyses.",
+    "continuous_time_indicators": "Variance=window-fitted latent stationary variance Q/(2 theta); autocorrelation=exp(-theta) at one time unit. Secondary/exploratory, with grid ties and edge flags reported.",
+    "elapsed_identity": "Elapsed reuses index surrogate series/stream; identical ordered window statistic series and strictly increasing window-centre times make this an identity check."
+  },
+  "implementation_requirements": {
+    "phase1a_no_candidate_passes": "Stop before Phase 1b/Phase 2 calibrated inference; report all candidates.",
+    "independent_trigger": "Use with-replacement resampling from model- and seed-block-specific empirical trigger outcome distribution, including no-escalation.",
+    "surrogate_p": "Use plus-one Monte Carlo p-value; count ties as exceedances.",
+    "paired_ci": "Bootstrap patient IDs, preserving paired arm outcomes; matched-pair Newcombe score interval only if a validated implementation is available.",
+    "latent_models": "Implement equations exactly as latent.ou_equations; do not silently substitute exact-OU transitions or another discretisation.",
+    "run_gate": "Before production, unit-test deterministic stream reproduction, stream-key uniqueness, baseline sharing, event-level independent errors, trigger measurement coupling, patient-level count matching, and surrogate p-value edge cases.",
+    "noise_only_control": "True latent signal is identically zero; only independent measurement errors remain; primary trigger is applied to measured noise.",
+    "fold_after_75": "Continue fold simulation through T=100 with r=0.05 after t=75; stop trajectory at first tipping crossing anywhere in [0,T].",
+    "surrogate_invalid": "Invalid surrogate statistics count as exceedances and are reported.",
+    "fixed_time_positions": "43 equally spaced starts from 0 through T-W inclusive.",
+    "never_escalated_preanalysis": "Use full series, flag and report never-escalated patients separately.",
+    "smooth_schedule_reference": "Use each model's explicitly specified reference level; fold uses +sqrt(r(t)).",
+    "random_streams": "Use the named streams for thinning, each variability subsampling draw, each arm/analysis/null surrogate replicate, and cohort-level bootstrap. No unrecorded global RNG."
+  },
+  "settled_review_points": {
+    "noise_only": "Accepted: zero latent truth, measurement error only, primary trigger applied to measured values.",
+    "state_space_surrogate": "Accepted with explicit rho=measurement-error variance / stationary latent variance and exact OU transition equations.",
+    "random_streams": "Accepted with separate named streams and cohort-level bootstrap seed.",
+    "fold_horizon": "Accepted: tipping checked through T=100; r held at 0.05 after t=75; stop immediately on tipping.",
+    "small_gaps": "Accepted: invalid surrogates count as exceedances; fixed-time starts evenly spaced over [0,T-W]; never-escalated patients use full series and are flagged; smooth schedule uses model-specific reference level; matched-pair Newcombe 1998 score interval is implemented and unit-tested.",
+    "remaining_design_caveat": "The smooth oracle schedule is defined for each latent model using its reference level; results must be labelled oracle/simulation-only. The state-space surrogate fit to a full transition series may absorb some transition structure; this is disclosed and alternative nulls are reported."
+  }
+}

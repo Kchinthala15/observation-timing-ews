@@ -1,0 +1,13 @@
+{
+  "phase": "phase2",
+  "block": "N2",
+  "role": "negative_control",
+  "written": "2026-10-30T20:18:38",
+  "config_sha256": "0473d4830407f1fde68988d32fb1d2ad14537b815c0fd34492b8391d084950d3",
+  "parent_config_sha256": "9a245eb092a47bc5e2851f0b681ec439c1a72ab34ed2fe3dedf63b9b29bff482",
+  "n_patients": 2000,
+  "rows": 4000,
+  "tipped": 0,
+  "minutes": 3.5,
+  "rows_sha256": "6ea66efb9ba7817cdb7fcd72b0210e6dff30a920ef7c8ba2d76499d0eba023fa"
+}

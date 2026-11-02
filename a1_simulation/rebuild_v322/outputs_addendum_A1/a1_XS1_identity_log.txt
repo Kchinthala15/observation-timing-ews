@@ -1,0 +1,1 @@
+2026-10-31T13:04:52  XS1 vs S1: 2000 rows compared, 0 differing -> PASSED

@@ -1,0 +1,49 @@
+{
+  "phase": "addendum_A1",
+  "block": "P5FA",
+  "role": "secondary_false_alarm",
+  "model": "stable",
+  "design": {
+    "schedule": "step",
+    "m": 2.0,
+    "trigger": "primary",
+    "arms": [
+      "regular_N",
+      "informative_reduced_N"
+    ],
+    "analyses": [
+      "fixed_time|W20",
+      "fixed_time|W30",
+      "fixed_time|W40",
+      "binned|30|linear_interp",
+      "binned|30|locf",
+      "binned|30|drop",
+      "binned|60|linear_interp",
+      "binned|60|locf",
+      "binned|60|drop",
+      "binned|120|linear_interp",
+      "binned|120|locf",
+      "binned|120|drop",
+      "interp|60"
+    ],
+    "nulls": [
+      "ar1_rep",
+      "shuffle_rep"
+    ],
+    "n_variability_draws": 0
+  },
+  "seed_base": 3000000,
+  "patient_ids": [
+    0,
+    1999
+  ],
+  "n_patients": 2000,
+  "rows": 104000,
+  "tipped": 0,
+  "minutes": 230.0,
+  "rows_sha256": "c8e8ecdc3495a98b69536fa89d69db3cf24f3ba97bc3ccc77930ff7e4b9259a3",
+  "a1_sha256": "9aff4ef745296e32b6b888b3cc32d08861aec3affe71a8153a88409922b4d7e5",
+  "config_sha256": "0473d4830407f1fde68988d32fb1d2ad14537b815c0fd34492b8391d084950d3",
+  "parent_config_sha256": "9a245eb092a47bc5e2851f0b681ec439c1a72ab34ed2fe3dedf63b9b29bff482",
+  "written": "2026-10-31T19:10:29"
+}

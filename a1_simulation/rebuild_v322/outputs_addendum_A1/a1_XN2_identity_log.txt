@@ -1,0 +1,1 @@
+2026-10-31T13:04:50  XN2 vs N2: 4000 rows compared, 0 differing -> PASSED

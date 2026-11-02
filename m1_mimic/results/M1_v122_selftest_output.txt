@@ -1,0 +1,32 @@
+    candidate control admissions with >=48 h continuous ward time: 4
+{
+ "set_A_control_base": true,
+ "set_A_control_pre": true,
+ "set_B_control_base": true,
+ "set_B_control_pre": true,
+ "did_equals_2.75": true,
+ "control_base_mean_equals_2.5": true,
+ "control_pre_mean_equals_0.75": true,
+ "not_pooled_2.0": true,
+ "bootstrap_AA_1.5": true,
+ "bootstrap_BB_4.0": true,
+ "bootstrap_AB_2.75": true,
+ "summarise_did_2.75": true,
+ "wnw_two_runs": true,
+ "wnw_no_48h_window_across": true,
+ "short_nonward_still_splits": true,
+ "overlapping_nonward_splits": true,
+ "zero_length_nonward_splits": true,
+ "ward_ward_small_gap_one_run": true,
+ "runs_agree_with_all_ward_12000_random_checks": true,
+ "pseudo_event_vectorised_equals_original_within_1_microsecond": true,
+ "exhaustive_eligible_equals_brute_force_all_ward": true,
+ "no_eligible_counted": true,
+ "every_case_with_eligible_resolved": true,
+ "each_control_patient_used_once": true,
+ "eligible_but_all_assigned_equals_1": true,
+ "one_control_others_assigned_equals_1": true,
+ "two_controls_share_equals_0.25": true,
+ "selected_controls_exact_clock_and_caliper": true
+}
+ALL PASSED
